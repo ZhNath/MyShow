@@ -13,23 +13,19 @@ export const FoundTVCard = () => {
   const [foundTVbyID, setFoundTVbyID] = useState(id);
   const [rating, setRating] = useState(0);
   const [casting, setCasting] = useState();
-  // const [images, setImages] = useState("");
 
   useEffect(() => {
     const Fetcher = async () => {
       const data = await dataFetcher(`tv/${id}?`);
-
       const ratingData = await dataFetcher(`tv/${id}/content_ratings?`);
-
       const castData = await dataFetcher(`tv/${id}/aggregate_credits?`);
 
       setFoundTVbyID(data);
-      setRating(ratingData.results[15].rating);
-      setCasting(castData.cast.slice(0, 15));
+      setRating(ratingData?.results?.[15]?.rating);
+      setCasting(castData?.cast?.slice(0, 15));
     };
     Fetcher();
   }, [id]);
-  console.log(casting);
 
   return (
     <>
@@ -39,7 +35,6 @@ export const FoundTVCard = () => {
         <RightSide foundTVbyID={foundTVbyID} />
       </div>
       <Bottom casting={casting} />
-      <Link to="/">Go back</Link>
     </>
   );
 };

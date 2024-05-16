@@ -5,13 +5,8 @@ export const Input = ({ setSearchResults, setIsDropDown }) => {
     const data = await dataFetcher(`/search/tv?query=${event.target.value}&`);
     setSearchResults(data);
     if (event.target.value.length > 0) setIsDropDown(true);
+    else setIsDropDown(false);
   };
 
-  return (
-    <input
-      type="text"
-      onChange={(e) => handleOnChange(e)}
-      // onBlur={() => setIsDropDown(false)}
-    />
-  );
+  return <input type="text" onChange={(e) => handleOnChange(e)} />;
 };

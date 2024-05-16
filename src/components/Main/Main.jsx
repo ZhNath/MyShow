@@ -14,17 +14,13 @@ export const Main = () => {
   }, []);
 
   return (
-    pop &&
-    pop.results &&
-    pop.results.length > 0 && (
-      <div
-        style={{
-          backgroundImage: `url(${IMG_URL}${pop.results[0].backdrop_path})`,
-          width: "100vw",
-          height: "100vh",
-          backgroundSize: "cover",
-        }}
-      ></div>
-    )
+    <div
+      style={{
+        backgroundImage: `url(${IMG_URL}${pop?.results?.[0]?.backdrop_path})`,
+        width: "100vw",
+        height: "100vh",
+        backgroundSize: "cover",
+      }}
+    ></div>
   );
 };

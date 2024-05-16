@@ -1,6 +1,5 @@
 export const Center = ({ foundTVbyID, rating }) => {
-  let time = [];
-  time = [
+  let time = [
     foundTVbyID?.first_air_date?.substring(0, 4),
     foundTVbyID?.last_air_date?.substring(0, 4),
   ];
@@ -12,11 +11,9 @@ export const Center = ({ foundTVbyID, rating }) => {
       </h1>
       <div className="genresBox">
         <div className="rating">{`${rating}+`}</div>
-        {foundTVbyID &&
-          foundTVbyID?.genres &&
-          foundTVbyID?.genres?.map((genre) => {
-            return <p key={genre?.id}>{genre?.name}</p>;
-          })}
+        {foundTVbyID?.genres?.map((genre) => {
+          return <p key={genre?.id}>{genre?.name}</p>;
+        })}
       </div>
       <button className="addToWatch">I will watch</button>
       <div className="aboutFilm">

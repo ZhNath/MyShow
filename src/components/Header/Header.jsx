@@ -3,6 +3,7 @@ import { Input } from "./Input";
 import { LogInButton } from "./LogInButton";
 import { SearchingResult } from "./SearchingResult";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -10,12 +11,23 @@ export const Header = () => {
 
   return (
     <div className="header">
-      <h1>My Show</h1>
+      <Link to="/">
+        <h1>My Show</h1>
+      </Link>
+      <div
+        onClick={() => {
+          window.history.back();
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        Back
+      </div>
       <Input
         setSearchResults={setSearchResults}
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}
       />
+      <LogInButton />
 
       {isDropDown && (
         <div className="dropdown">
@@ -25,7 +37,6 @@ export const Header = () => {
           />
         </div>
       )}
-      <LogInButton />
     </div>
   );
 };

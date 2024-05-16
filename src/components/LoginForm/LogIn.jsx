@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import "../../styles/LogIn.css";
 import {
   makeToken,
   makeSession,
   validateUser,
 } from "../../assets/domain/apiClient";
+import { useState, useEffect } from "react";
+import "../../styles/LogIn.css";
 import { useAuthContext } from "../../globalContext/AuthContext";
+import { FormElements } from "./FormElements";
 
 export const LogIn = () => {
   const [username, setUsername] = useState("");
@@ -38,32 +39,26 @@ export const LogIn = () => {
       setError(error.message);
     }
   };
-
+  const handleOnChange = (e) => {
+    e.target.id === "username"
+      ? setUsername(e.target.value)
+      : setPassword(e.target.value);
+    setError(null);
+  };
   return (
     <div className="loginBox">
       <h2>Login to your account</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleLogIn}>
-        <label htmlFor="username">Username</label>
-        <input
+        <FormElements
           id="username"
-          type="text"
-          placeholder="Username"
-          onChange={(e) => {
-            setUsername(e.target.value);
-            setError(null);
-          }}
+          value={username}
+          listener={handleOnChange}
         />
-        <label htmlFor="pass">Password</label>
-        <input
-          id="pass"
-          type="password"
-          placeholder="Password"
+        <FormElements
+          id="password"
           value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-            setError(null);
-          }}
+          listener={handleOnChange}
         />
         <span>
           In order to use the editing and rating capabilities of TMDB, as well
