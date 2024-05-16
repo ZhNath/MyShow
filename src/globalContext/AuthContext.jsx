@@ -3,7 +3,7 @@ import { createContext, useContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState();
   const [session_id, setSession_id] = useState("");
 
   useEffect(() => {
@@ -11,11 +11,15 @@ export const AuthProvider = ({ children }) => {
     if (new_session_id) {
       setSession_id(new_session_id);
       setIsAuthenticated(true);
+    } else {
+      setIsAuthenticated(false);
     }
   }, []);
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, setIsAuthenticated, session_id }}
+    >
       {children}
     </AuthContext.Provider>
   );

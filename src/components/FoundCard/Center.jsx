@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+import { ToWatchListButton } from "../../assets/utils/ToWatchListButton";
+
 export const Center = ({ foundTVbyID, rating }) => {
   let time = [
     foundTVbyID?.first_air_date?.substring(0, 4),
     foundTVbyID?.last_air_date?.substring(0, 4),
   ];
+
   return (
     <div className="center">
       <h1>
@@ -15,7 +19,9 @@ export const Center = ({ foundTVbyID, rating }) => {
           return <p key={genre?.id}>{genre?.name}</p>;
         })}
       </div>
-      <button className="addToWatch">I will watch</button>
+
+      {ToWatchListButton("Add to Watchlist")}
+
       <div className="aboutFilm">
         <p>
           <i>{foundTVbyID?.tagline}</i>
