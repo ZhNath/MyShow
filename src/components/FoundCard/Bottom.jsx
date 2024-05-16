@@ -9,7 +9,7 @@ export const Bottom = ({ casting }) => {
               <img
                 src={`https://image.tmdb.org/t/p/original${actor?.profile_path}`}
                 alt=""
-                style={{ width: "100px" }}
+                style={{ width: "120px" }}
               />
               <p>{actor?.name}</p>
             </div>
