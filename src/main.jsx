@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./views/Homepage.jsx";
 import { PageNotFound } from "./views/PageNotFound.jsx";
 import { FoundTVCard } from "./views/FoundTVCard.jsx";
+import { LogInWindow } from "./views/LogInWindow.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="/" element={<Root />}>
           <Route index element={<Homepage />} />
           <Route path="filter/:id" element={<FoundTVCard />} />
+          <Route path="login" element={<LogInWindow />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>

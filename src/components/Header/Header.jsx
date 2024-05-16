@@ -1,5 +1,6 @@
 import "../../styles/Header.css";
 import { Input } from "./Input";
+import { LogInButton } from "./LogInButton";
 import { SearchingResult } from "./SearchingResult";
 import { useState } from "react";
 
@@ -24,6 +25,7 @@ export const Header = () => {
           />
         </div>
       )}
+      <LogInButton />
     </div>
   );
 };
