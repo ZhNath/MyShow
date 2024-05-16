@@ -46,4 +46,6 @@
 .header .loginButton {
   margin-left: 4rem;
   border: none;
+  background-color: transparent;
+  color: white;
 }

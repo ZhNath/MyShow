@@ -1,5 +1,5 @@
-import { IMG_URL } from "../../assets/server";
-import { dataFetcher } from "../../assets/server";
+import { IMG_URL } from "../../assets/domain/apiClient";
+import { dataFetcher } from "../../assets/domain/apiClient";
 import { useEffect, useState } from "react";
 
 export const Main = () => {

@@ -1,4 +1,4 @@
-import { dataFetcher } from "../../assets/server";
+import { dataFetcher } from "../../assets/domain/apiClient";
 
 export const Input = ({ setSearchResults, setIsDropDown }) => {
   const handleOnChange = async (event) => {

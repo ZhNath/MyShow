@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { dataFetcher } from "../assets/server";
+import { dataFetcher } from "../assets/domain/apiClient";
 import { useState, useEffect } from "react";
 import "../styles/Card.css";
 import { LeftSide } from "../components/FoundCard/LeftSide";

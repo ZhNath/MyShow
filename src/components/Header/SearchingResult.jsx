@@ -1,4 +1,4 @@
-import { IMG_URL } from "../../assets/server.js";
+import { IMG_URL } from "../../assets/domain/apiClient";
 import { Link } from "react-router-dom";
 
 export const SearchingResult = ({ searchResults, setIsDropDown }) => {
