@@ -1,0 +1,95 @@
+.TVCard {
+  width: 80vw;
+  height: 100vh;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  box-shadow: 10px 10px 25px 5px rgba(141, 152, 218, 0.2),
+    inset 3px 3px 15px rgba(80, 95, 188, 0.19);
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+}
+
+.TVCard .left {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.TVCard img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.TVCard .center {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  text-align: left;
+  gap: 1rem;
+}
+
+.TVCard .center h1 {
+  font-size: 2rem;
+}
+.TVCard .rating {
+  padding: 4px;
+  border: 1px solid rgb(135, 135, 224);
+}
+.TVCard .genresBox {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 2rem;
+}
+
+.TVCard .addToWatch {
+  background-color: rgb(135, 135, 224);
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+}
+
+.aboutFilm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
+
+.TVCard h3 {
+  line-height: 1em;
+}
+
+.TVCard .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.vote {
+  font-size: 1.2rem;
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgb(135, 135, 224);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cast {
+  width: 80vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 2rem;
+  overflow: auto;
+}
