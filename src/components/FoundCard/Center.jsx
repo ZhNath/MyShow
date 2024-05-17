@@ -18,7 +18,7 @@ export const Center = ({ foundTVbyID, rating }) => {
         })}
       </div>
 
-      {ToWatchListButton("Add to Watchlist", foundTVbyID.id)}
+      {ToWatchListButton(foundTVbyID.id)}
 
       <div className="aboutFilm">
         <p>

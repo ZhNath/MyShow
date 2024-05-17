@@ -48,7 +48,7 @@
   gap: 2rem;
 }
 
-.TVCard .addToWatch {
+.TVCard .toFromWatch {
   background-color: rgb(135, 135, 224);
   border: 1px solid transparent;
   border-radius: 5px;

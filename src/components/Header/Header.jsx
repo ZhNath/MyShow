@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
+
   return (
     <div className="header">
       <Link to="/">
@@ -21,11 +22,13 @@ export const Header = () => {
       >
         Back
       </div>
+
       <Input
         setSearchResults={setSearchResults}
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}
       />
+
       <LogInButton />
 
       {isDropDown && (

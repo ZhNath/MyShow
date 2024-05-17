@@ -4,7 +4,7 @@ import {
   makeAccount,
   validateUser,
 } from "../../assets/domain/apiClient";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "../../styles/LogIn.css";
 import { useAuthContext } from "../../globalContext/AuthContext";
 import { FormElements } from "./FormElements";
