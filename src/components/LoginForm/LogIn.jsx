@@ -34,8 +34,7 @@ export const LogIn = () => {
         localStorage.setItem("session_id", session_id);
         localStorage.setItem("account_id", account_id.id);
         localStorage.setItem("username", username);
-        window.location.reload();
-        window.history.back();
+        window.location.href = document.referrer;
       } else {
         setError("Authentication failed");
       }
