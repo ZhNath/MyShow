@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { ToWatchListButton } from "../../assets/utils/ToWatchListButton";
 
 export const Center = ({ foundTVbyID, rating }) => {
@@ -6,7 +5,6 @@ export const Center = ({ foundTVbyID, rating }) => {
     foundTVbyID?.first_air_date?.substring(0, 4),
     foundTVbyID?.last_air_date?.substring(0, 4),
   ];
-
   return (
     <div className="center">
       <h1>
@@ -20,7 +18,7 @@ export const Center = ({ foundTVbyID, rating }) => {
         })}
       </div>
 
-      {ToWatchListButton("Add to Watchlist")}
+      {ToWatchListButton("Add to Watchlist", foundTVbyID.id)}
 
       <div className="aboutFilm">
         <p>

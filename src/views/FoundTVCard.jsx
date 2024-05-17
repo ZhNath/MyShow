@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { dataFetcher } from "../assets/domain/apiClient";
 import { useState, useEffect } from "react";
@@ -19,7 +18,6 @@ export const FoundTVCard = () => {
       const data = await dataFetcher(`tv/${id}?`);
       const ratingData = await dataFetcher(`tv/${id}/content_ratings?`);
       const castData = await dataFetcher(`tv/${id}/aggregate_credits?`);
-
       setFoundTVbyID(data);
       setRating(ratingData?.results?.[15]?.rating);
       setCasting(castData?.cast?.slice(0, 15));

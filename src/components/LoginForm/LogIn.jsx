@@ -1,6 +1,7 @@
 import {
   makeToken,
   makeSession,
+  makeAccount,
   validateUser,
 } from "../../assets/domain/apiClient";
 import { useState, useEffect } from "react";
@@ -29,8 +30,11 @@ export const LogIn = () => {
       if (isAuth) {
         setIsAuthenticated(true);
         const session_id = await makeSession(request_token);
+        const account_id = await makeAccount(session_id);
         localStorage.setItem("session_id", session_id);
+        localStorage.setItem("account_id", account_id.id);
         localStorage.setItem("username", username);
+        window.location.reload();
         window.history.back();
       } else {
         setError("Authentication failed");
@@ -39,12 +43,14 @@ export const LogIn = () => {
       setError(error.message);
     }
   };
+
   const handleOnChange = (e) => {
     e.target.id === "username"
       ? setUsername(e.target.value)
       : setPassword(e.target.value);
     setError(null);
   };
+
   return (
     <div className="loginBox">
       <h2>Login to your account</h2>
@@ -66,7 +72,7 @@ export const LogIn = () => {
           account. If you do not have an account, registering for an account is
           free and simple.{" "}
         </span>
-        <a href="https://www.themoviedb.org/signup">Register</a>
+        <a href="https://www.themoviedb.org/login">Register</a>
         <span>If you signed up but didn't get your verification email </span>
         <a href="https://www.themoviedb.org/resend-email-verification">
           Verify email

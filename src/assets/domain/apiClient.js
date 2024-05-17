@@ -11,8 +11,6 @@ export const makeToken = async () => {
 };
 
 export const validateUser = async (username, password, request_token) => {
-  console.log("Validating User with username:", username);
-  console.log("Request Token:", request_token);
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -43,8 +41,42 @@ export const makeSession = async (request_token) => {
   return data.session_id;
 };
 
+export const makeAccount = async (session_id) => {
+  const _url = `${BASE_URL}/account?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url);
+  const data = await response.json();
+  return data;
+};
+
 export const dataFetcher = async (type) => {
   const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}&page=1`;
+  const response = await fetch(_url);
+  const data = await response.json();
+  return data;
+};
+
+export const addToWatchList = async (account_id, media_id) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      media_type: "tv",
+      media_id: media_id,
+      watchlist: true,
+    }),
+  };
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `${BASE_URL}/account/${account_id}/watchlist?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url, requestOptions);
+  const data = await response.json();
+  return data;
+};
+
+export const getWatchList = async (account_id) => {
+  const _url = `${BASE_URL}/account/${account_id}/watchlist/tv?api_key=${API_KEY}`;
   const response = await fetch(_url);
   const data = await response.json();
   return data;

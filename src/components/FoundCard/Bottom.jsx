@@ -1,7 +1,7 @@
 export const Bottom = ({ casting }) => {
   return (
     <>
-      <h3>Series Cast</h3>
+      <h3 className="cast">Series Cast</h3>
       <div className="cast">
         {casting?.map((actor) => (
           <div key={actor?.id}>

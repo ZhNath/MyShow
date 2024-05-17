@@ -8,17 +8,16 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [searchResults, setSearchResults] = useState(null);
-
   return (
     <div className="header">
       <Link to="/">
         <h1>My Show</h1>
       </Link>
       <div
+        className="back-button"
         onClick={() => {
           window.history.back();
         }}
-        style={{ cursor: "pointer" }}
       >
         Back
       </div>
