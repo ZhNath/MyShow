@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { dataFetcher } from "../assets/domain/apiClient";
 import { useState, useEffect } from "react";
 import "../styles/Card.css";
-import { LeftSide } from "../components/FoundCard/LeftSide";
-import { RightSide } from "../components/FoundCard/RightSide";
-import { Center } from "../components/FoundCard/Center";
-import { Bottom } from "../components/FoundCard/Bottom";
+import { LeftSide } from "../components/TVCard/LeftSide";
+import { RightSide } from "../components/TVCard/RightSide";
+import { Center } from "../components/TVCard/Center";
+import { Bottom } from "../components/TVCard/Bottom";
 
 export const FoundTVCard = () => {
   const { id } = useParams();

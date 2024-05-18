@@ -53,16 +53,21 @@
   border: 1px solid transparent;
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
+  cursor: pointer;
 }
 
 .aboutFilm {
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
-.TVCard h3 {
-  line-height: 1em;
+.aboutFilm h3 {
+  margin-top: 2rem;
+}
+.aboutFilm span {
+  margin-top: 0.6rem;
+  font-weight: 100;
 }
 
 .TVCard .right {
@@ -73,7 +78,7 @@
   padding-top: 2rem;
 }
 
-.vote {
+.TVCard .right .vote {
   font-size: 1.2rem;
   font-weight: bold;
   width: 60px;
@@ -84,6 +89,12 @@
   justify-content: center;
   align-items: center;
 }
+.TVCard .right .p {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 h3.cast {
   text-align: center;
 }
@@ -95,4 +106,5 @@ div.cast {
   gap: 1rem;
   margin-top: 2rem;
   overflow: auto;
+  font-weight: 300;
 }

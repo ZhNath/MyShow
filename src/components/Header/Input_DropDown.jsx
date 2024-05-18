@@ -1,9 +1,9 @@
 import { dataFetcher } from "../../assets/domain/apiClient";
 import { useState, useRef } from "react";
 import { DropDown } from "../../assets/utils/DropDown";
-import { SearchingResult } from "./SearchingResult";
+import { DisplayOfSearchingByName } from "../../assets/utils/DisplayOfSearchingByName";
 
-export const Input = () => {
+export const Input_DropDown = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [searchResults, setSearchResults] = useState();
   const dropdownRef = useRef(null);
@@ -21,6 +21,7 @@ export const Input = () => {
     const data = await dataFetcher(`/search/tv?query=${event.target.value}&`);
     setSearchResults(data);
   };
+  console.log(searchResults);
 
   return (
     <>
@@ -31,7 +32,7 @@ export const Input = () => {
         classes="dropdown"
         dropdownRef={dropdownRef}
       >
-        <SearchingResult searchResults={searchResults} />
+        <DisplayOfSearchingByName searchResults={searchResults} />
       </DropDown>
     </>
   );
