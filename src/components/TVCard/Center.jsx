@@ -12,9 +12,7 @@ export const Center = ({ tv }) => {
         <div className="rating">{tv.rating}</div>
         <div>{tv.genres.join(" | ")}</div>
       </div>
-
-      {ToWatchListButton(tv.id)}
-
+      <ToWatchListButton mediaId={tv.id} />
       <div className="aboutFilm">
         <p>
           <i>{tv.tagline}</i>

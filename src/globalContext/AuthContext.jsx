@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { getWatchList } from "../assets/domain/apiClient";
 
 export const AuthContext = createContext();
 
@@ -6,22 +7,40 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState();
   const [session_id, setSession_id] = useState("");
   const [username, setUsername] = useState("");
+  const [watchList, setWatchList] = useState([]);
+  const [idWatchList, setIdWatchList] = useState([]);
 
   useEffect(() => {
-    const new_username = localStorage.getItem("username");
-    const new_session_id = localStorage.getItem("session_id");
-    if (new_session_id) {
-      setUsername(new_username);
-      setSession_id(new_session_id);
-      setIsAuthenticated(true);
-    } else {
-      setIsAuthenticated(false);
-    }
+    const fetchData = async () => {
+      const new_username = localStorage.getItem("username");
+      const new_session_id = localStorage.getItem("session_id");
+      if (new_session_id) {
+        setUsername(new_username);
+        setSession_id(new_session_id);
+        setIsAuthenticated(true);
+        const watchListData = await getWatchList();
+        setWatchList(watchListData);
+        setIdWatchList(watchListData.results.map((tv) => tv.id));
+      } else {
+        setIsAuthenticated(false);
+      }
+    };
+    fetchData();
   }, []);
-
+  console.log("AuthContext watchList:", watchList);
+  console.log("AuthContext idWatchList:", idWatchList);
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, setIsAuthenticated, session_id, username }}
+      value={{
+        isAuthenticated,
+        setIsAuthenticated,
+        session_id,
+        username,
+        watchList,
+        setWatchList,
+        idWatchList,
+        setIdWatchList,
+      }}
     >
       {children}
     </AuthContext.Provider>

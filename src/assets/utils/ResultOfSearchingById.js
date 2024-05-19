@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import { dataFetcher } from "../domain/apiClient";
 import "../../styles/Card.css";
 import { useEffect, useState } from "react";

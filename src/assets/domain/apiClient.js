@@ -55,7 +55,7 @@ export const dataFetcher = async (type) => {
   return data;
 };
 
-export const addToWatchList = async (account_id, media_id) => {
+export const addToWatchList = async (media_id) => {
   const requestOptions = {
     method: "POST",
     headers: {
@@ -69,15 +69,16 @@ export const addToWatchList = async (account_id, media_id) => {
     }),
   };
   const session_id = localStorage.getItem(`session_id`);
+  const account_id = localStorage.getItem(`account_id`);
   const _url = `${BASE_URL}/account/${account_id}/watchlist?api_key=${API_KEY}&session_id=${session_id}`;
   const response = await fetch(_url, requestOptions);
   const data = await response.json();
   return data;
 };
 
-export const deleteFromWatchList = async (account_id, media_id) => {
+export const deleteFromWatchList = async (media_id) => {
   const requestOptions = {
-    method: "DELETE",
+    method: "POST",
     headers: {
       accept: "application/json",
       "content-type": "application/json",
@@ -85,18 +86,21 @@ export const deleteFromWatchList = async (account_id, media_id) => {
     body: JSON.stringify({
       media_type: "tv",
       media_id: media_id,
-      watchlist: true,
+      watchlist: false,
     }),
   };
   const session_id = localStorage.getItem(`session_id`);
+  const account_id = localStorage.getItem(`account_id`);
   const _url = `${BASE_URL}/account/${account_id}/watchlist?api_key=${API_KEY}&session_id=${session_id}`;
   const response = await fetch(_url, requestOptions);
   const data = await response.json();
   return data;
 };
 
-export const getWatchList = async (account_id) => {
-  const _url = `${BASE_URL}/account/${account_id}/watchlist/tv?api_key=${API_KEY}`;
+export const getWatchList = async () => {
+  const account_id = localStorage.getItem(`account_id`);
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `${BASE_URL}/account/${account_id}/watchlist/tv?api_key=${API_KEY}&session_id=${session_id}`;
   const response = await fetch(_url);
   const data = await response.json();
   return data;

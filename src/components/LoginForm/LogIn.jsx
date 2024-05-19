@@ -3,6 +3,7 @@ import {
   makeSession,
   makeAccount,
   validateUser,
+  getWatchList,
 } from "../../assets/domain/apiClient";
 import { useState } from "react";
 import "../../styles/LogIn.css";

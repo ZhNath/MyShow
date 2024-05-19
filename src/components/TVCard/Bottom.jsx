@@ -3,8 +3,8 @@ export const Bottom = ({ tv }) => {
     <>
       <h3 className="cast">Series Cast</h3>
       <div className="cast">
-        {tv.cast.map((actor) => (
-          <div key={actor.id} className="cast-item">
+        {tv.cast.map((actor, index) => (
+          <div key={`${actor.id}-${index}`} className="cast-item">
             <img
               src={`https://image.tmdb.org/t/p/original${actor.image}`}
               alt={actor.name}
