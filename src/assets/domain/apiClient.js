@@ -75,6 +75,26 @@ export const addToWatchList = async (account_id, media_id) => {
   return data;
 };
 
+export const deleteFromWatchList = async (account_id, media_id) => {
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      media_type: "tv",
+      media_id: media_id,
+      watchlist: true,
+    }),
+  };
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `${BASE_URL}/account/${account_id}/watchlist?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url, requestOptions);
+  const data = await response.json();
+  return data;
+};
+
 export const getWatchList = async (account_id) => {
   const _url = `${BASE_URL}/account/${account_id}/watchlist/tv?api_key=${API_KEY}`;
   const response = await fetch(_url);

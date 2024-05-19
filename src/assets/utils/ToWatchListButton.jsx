@@ -14,6 +14,7 @@ export const ToWatchListButton = (mediaId) => {
       addToWatchList(accountId, mediaId);
       setText("Remove from Watchlist");
     } else {
+      deleteFromWatchList(accountId, mediaId);
       setText("Add to Watchlist");
     }
   }, [isInWatchList]);
