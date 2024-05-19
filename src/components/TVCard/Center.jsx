@@ -1,34 +1,29 @@
 import { ToWatchListButton } from "../../assets/utils/ToWatchListButton";
+import "../../styles/Card.css";
 
-export const Center = ({ foundTVbyID, rating }) => {
-  let time = [
-    foundTVbyID?.first_air_date?.substring(0, 4),
-    foundTVbyID?.last_air_date?.substring(0, 4),
-  ];
+export const Center = ({ tv }) => {
   return (
     <div className="center">
       <h1>
-        {foundTVbyID?.name} <br />
-        {`(${time[0]}-${time[1]})`}
+        {tv.name} <br />
+        {tv.date}
       </h1>
       <div className="genresBox">
-        <div className="rating">{`${rating}+`}</div>
-        {foundTVbyID?.genres?.map((genre) => {
-          return <p key={genre?.id}>{genre?.name}</p>;
-        })}
+        <div className="rating">{tv.rating}</div>
+        <div>{tv.genres.join(" | ")}</div>
       </div>
 
-      {ToWatchListButton(foundTVbyID.id)}
+      <ToWatchListButton id={tv.id} />
 
       <div className="aboutFilm">
         <p>
-          <i>{foundTVbyID?.tagline}</i>
+          <i>{tv.tagline}</i>
         </p>
         <h3>Overview</h3>
-        <span>{foundTVbyID?.overview}</span>
+        <span>{tv.overview}</span>
       </div>
       <div>
-        <h3>{foundTVbyID?.created_by?.[0]?.name}</h3>
+        <h3>{tv.creator}</h3>
         <p>creator</p>
       </div>
     </div>

@@ -1,9 +1,9 @@
-export const RightSide = ({ foundTVbyID }) => {
+export const RightSide = ({ tv }) => {
   return (
     <div className="right">
-      <div className="vote">{foundTVbyID?.vote_average}</div>
+      <div className="vote">{tv.voteAverage}</div>
       <p>Total votes: </p>
-      <p>{`${foundTVbyID?.vote_count}`}</p>
+      <p>{`${tv.voteCount}`}</p>
     </div>
   );
 };

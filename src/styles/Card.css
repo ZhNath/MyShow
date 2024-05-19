@@ -108,3 +108,10 @@ div.cast {
   overflow: auto;
   font-weight: 300;
 }
+
+.cast-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
