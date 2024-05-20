@@ -30,8 +30,16 @@ export const LogInButton = () => {
         setIsDropDown={setIsDropDown}
         classes="dropdown logdropdown"
       >
-        <div onClick={() => getWatchList(account_id)}>Watchlist</div>
+        <Link to="/watchlist">Watchlist</Link>
+        <hr />
+        <Link to="/watchlist">Want to watch</Link>
+        {/* <Link to="/watchlist">Watching</Link>
+        <Link to="/watchlist">Completed</Link>
+        <Link to="/watchlist">Dropped</Link> */}
+
+        <hr />
         <div>Edit Profile</div>
+        <hr />
         <div
           className="logdropdown-item"
           onClick={() => {

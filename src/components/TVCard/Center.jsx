@@ -1,5 +1,6 @@
 import { ToWatchListButton } from "../../assets/utils/ToWatchListButton";
 import "../../styles/Card.css";
+import { Link } from "react-router-dom";
 
 export const Center = ({ tv }) => {
   return (
@@ -13,6 +14,9 @@ export const Center = ({ tv }) => {
         <div>{tv.genres.join(" | ")}</div>
       </div>
       <ToWatchListButton mediaId={tv.id} />
+      <Link to="/watchlist">
+        <button className="toFromWatch">Go to Watch List</button>
+      </Link>
       <div className="aboutFilm">
         <p>
           <i>{tv.tagline}</i>

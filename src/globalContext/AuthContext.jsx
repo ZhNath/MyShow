@@ -19,7 +19,6 @@ export const AuthProvider = ({ children }) => {
         setSession_id(new_session_id);
         setIsAuthenticated(true);
         const watchListData = await getWatchList();
-        console.log("Watchlist data:", watchListData);
         setWatchList(watchListData);
         setIdWatchList(watchListData.results.map((tv) => tv.id));
       } else {

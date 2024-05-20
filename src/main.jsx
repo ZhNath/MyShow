@@ -7,6 +7,7 @@ import Homepage from "./views/Homepage.jsx";
 import { PageNotFound } from "./views/PageNotFound.jsx";
 import { TVCard } from "./views/TVCard.jsx";
 import { LogInWindow } from "./views/LogInWindow.jsx";
+import { WatchList } from "./views/WatchList.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -16,6 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route index element={<Homepage />} />
           <Route path="filter/:id" element={<TVCard />} />
           <Route path="login" element={<LogInWindow />} />
+          <Route path="watchlist" element={<WatchList />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
