@@ -19,6 +19,7 @@ export const AuthProvider = ({ children }) => {
         setSession_id(new_session_id);
         setIsAuthenticated(true);
         const watchListData = await getWatchList();
+        console.log("Watchlist data:", watchListData);
         setWatchList(watchListData);
         setIdWatchList(watchListData.results.map((tv) => tv.id));
       } else {
@@ -27,8 +28,6 @@ export const AuthProvider = ({ children }) => {
     };
     fetchData();
   }, []);
-  console.log("AuthContext watchList:", watchList);
-  console.log("AuthContext idWatchList:", idWatchList);
   return (
     <AuthContext.Provider
       value={{

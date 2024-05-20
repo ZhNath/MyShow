@@ -1,7 +1,6 @@
-import { WatchList } from "./WatchList";
+import { useAuthContext } from "../../globalContext/AuthContext";
 
 export const IsTVinWatchList = (tvId) => {
-  const data = WatchList();
-  console.log("IsTVinWatchList data:", data);
-  return data.results.some((tv) => tv.id === tvId);
+  const { idWatchList } = useAuthContext();
+  return idWatchList.includes(tvId);
 };

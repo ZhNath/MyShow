@@ -2,12 +2,20 @@ import { useAuthContext } from "../../globalContext/AuthContext";
 import { Link } from "react-router-dom";
 import { addToWatchList, deleteFromWatchList } from "../domain/apiClient";
 import { useState, useEffect } from "react";
+import { IsTVinWatchList } from "./IsTVinWatchList";
 
 export const ToWatchListButton = ({ mediaId }) => {
-  const { isAuthenticated } = useAuthContext();
-  const [isInWatchList, setIsInWatchList] = useState(false);
-  const [text, setText] = useState("Add to Watchlist");
-  // const accountId = localStorage.getItem("account_id");
+  const { isAuthenticated, idWatchList } = useAuthContext();
+  const isInWatchListInitially = IsTVinWatchList(mediaId);
+  const [isInWatchList, setIsInWatchList] = useState();
+  const [text, setText] = useState();
+
+  useEffect(() => {
+    setIsInWatchList(isInWatchListInitially);
+    setText(
+      isInWatchListInitially ? "Remove from Watchlist" : "Add to Watchlist"
+    );
+  }, [isInWatchListInitially]);
 
   useEffect(() => {
     if (isInWatchList) {
@@ -23,7 +31,9 @@ export const ToWatchListButton = ({ mediaId }) => {
     <Link to={isAuthenticated ? "" : "/login"}>
       <button
         className="toFromWatch"
-        onClick={() => setIsInWatchList(!isInWatchList)}
+        onClick={() => {
+          setIsInWatchList(!isInWatchList);
+        }}
       >
         {text}
       </button>
