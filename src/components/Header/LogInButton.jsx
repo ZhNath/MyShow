@@ -32,11 +32,18 @@ export const LogInButton = () => {
       >
         <Link to="/watchlist">Watchlist</Link>
         <hr />
-        <Link to="/watchlist">Want to watch</Link>
-        {/* <Link to="/watchlist">Watching</Link>
-        <Link to="/watchlist">Completed</Link>
-        <Link to="/watchlist">Dropped</Link> */}
-
+        <Link to="/watchlist/Want to watch" style={{ fontSize: "0.8rem" }}>
+          Want to watch
+        </Link>
+        <Link to="/watchlist/Watching" style={{ fontSize: "0.8rem" }}>
+          Watching
+        </Link>
+        <Link to="/watchlist/Completed" style={{ fontSize: "0.8rem" }}>
+          Completed
+        </Link>
+        <Link to="/watchlist/Dropped" style={{ fontSize: "0.8rem" }}>
+          Dropped
+        </Link>
         <hr />
         <div>Edit Profile</div>
         <hr />

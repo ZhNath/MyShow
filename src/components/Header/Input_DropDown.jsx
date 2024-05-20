@@ -6,7 +6,7 @@ import { DisplayOfSearchingByName } from "../../assets/utils/DisplayOfSearchingB
 export const Input_DropDown = () => {
   const [isDropDown, setIsDropDown] = useState(false);
   const [searchResults, setSearchResults] = useState();
-  const dropdownRef = useRef(null);
+  // const dropdownRef = useRef(null);
 
   const handleOnChange = async (event) => {
     if (event.target.value.length > 0)
@@ -30,7 +30,7 @@ export const Input_DropDown = () => {
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}
         classes="dropdown"
-        dropdownRef={dropdownRef}
+        // dropdownRef={dropdownRef}
       >
         <DisplayOfSearchingByName searchResults={searchResults} />
       </DropDown>

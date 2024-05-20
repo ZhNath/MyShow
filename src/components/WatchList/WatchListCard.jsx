@@ -24,7 +24,6 @@ export const WatchListCard = ({ id }) => {
   }
 
   function handleDivStatus() {
-    //     setStatusTV(event.target.value);
     setVisibilityInput("visible");
     setVisibilityDev("hidden");
   }
@@ -76,7 +75,7 @@ export const WatchListCard = ({ id }) => {
           <input
             type="radio"
             name={`statusTV-${id}`}
-            value="dropped"
+            value="Dropped"
             onChange={handleRadioChange}
           />
           Dropped
