@@ -4,6 +4,7 @@ import {
   makeAccount,
   validateUser,
   getWatchList,
+  createList,
 } from "../../assets/domain/apiClient";
 import { useState } from "react";
 import "../../styles/LogIn.css";
@@ -16,6 +17,11 @@ export const LogIn = () => {
   const [error, setError] = useState(null);
 
   const { isAuthenticated, setIsAuthenticated } = useAuthContext();
+
+  // const [ListWatching, setListWatching] = useState(null);
+  // const [ListWantToWatch, setListWantToWatch] = useState(null);
+  // const [ListCompleted, setListCompleted] = useState(null);
+  // const [ListDropped, setListDropped] = useState(null);
 
   const handleLogIn = async (e) => {
     e.preventDefault();
@@ -35,6 +41,33 @@ export const LogIn = () => {
         localStorage.setItem("session_id", session_id);
         localStorage.setItem("account_id", account_id.id);
         localStorage.setItem("username", username);
+
+        if (localStorage.getItem("idListWatching") === null) {
+          const list = await createList(
+            "Watching",
+            "TV Shows I'm currently watching"
+          );
+          localStorage.setItem("idListWatching", list.list_id);
+        }
+
+        if (localStorage.getItem("idListWantToWatch") === null) {
+          const list = await createList(
+            "Want to watch",
+            "TV Shows I want to watch"
+          );
+          localStorage.setItem("idListWantToWatch", list.list_id);
+        }
+
+        if (localStorage.getItem("idListCompleted") === null) {
+          const list = await createList("Completed", "TV Shows I've completed");
+          localStorage.setItem("idListCompleted", list.list_id);
+        }
+
+        if (localStorage.getItem("idListDropped") === null) {
+          const list = await createList("Dropped", "TV Shows I've dropped");
+          localStorage.setItem("idListDropped", list.list_id);
+        }
+
         window.location.href = document.referrer;
       } else {
         setError("Authentication failed");

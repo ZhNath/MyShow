@@ -46,6 +46,21 @@ export const ResultOfSearchingById = (id) => {
       name: actor?.name,
       image: actor?.profile_path,
     })),
+
+    nextEpisode: {
+      airDate: data?.next_episode_to_air?.air_date,
+      seasonNumber: data?.next_episode_to_air?.season_number,
+      episodeNumber: data?.next_episode_to_air?.episode_number,
+      name: data?.next_episode_to_air?.name,
+    },
+
+    seasons: data?.seasons?.map((season) => ({
+      name: season?.name,
+      episodeCount: season?.episode_count,
+      seasonNumber: season?.season_number,
+      posterPath: `${IMG_URL}${season?.poster_path}`,
+      overview: season?.overview,
+    })),
   };
 
   return tv;

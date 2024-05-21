@@ -21,7 +21,6 @@ export const Input_DropDown = () => {
     const data = await dataFetcher(`/search/tv?query=${event.target.value}&`);
     setSearchResults(data);
   };
-  console.log(searchResults);
 
   return (
     <>

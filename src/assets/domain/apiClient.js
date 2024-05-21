@@ -3,6 +3,8 @@ export const BASE_URL = "https://api.themoviedb.org/3";
 export const IMG_URL = "https://image.tmdb.org/t/p/original";
 const language = "en-US";
 
+// Authentication
+
 export const makeToken = async () => {
   const _url = `${BASE_URL}/authentication/token/new?api_key=${API_KEY}`;
   const response = await fetch(_url);
@@ -48,12 +50,16 @@ export const makeAccount = async (session_id) => {
   return data;
 };
 
+// Data fetching
+
 export const dataFetcher = async (type) => {
   const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}&page=1`;
   const response = await fetch(_url);
   const data = await response.json();
   return data;
 };
+
+// Watchlist
 
 export const addToWatchList = async (media_id) => {
   const requestOptions = {
@@ -102,6 +108,43 @@ export const getWatchList = async () => {
   const session_id = localStorage.getItem(`session_id`);
   const _url = `${BASE_URL}/account/${account_id}/watchlist/tv?api_key=${API_KEY}&session_id=${session_id}`;
   const response = await fetch(_url);
+  const data = await response.json();
+  return data;
+};
+
+// Lists
+export const createList = async (name, description) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      name: name,
+      description: description,
+    }),
+  };
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `${BASE_URL}/list?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url, requestOptions);
+  const data = await response.json();
+  return data;
+};
+
+export const addTVtoList = async (list_id, media_id) => {
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    media_type: "tv",
+    body: JSON.stringify({ media_id: media_id }),
+  };
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `${BASE_URL}/list/${list_id}/add_item?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url, requestOptions);
   const data = await response.json();
   return data;
 };

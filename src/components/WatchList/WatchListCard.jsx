@@ -1,5 +1,7 @@
 import { ResultOfSearchingById } from "../../assets/utils/ResultOfSearchingById";
 import { useState, useEffect } from "react";
+import { LabelAndInput } from "./LabelAndInput";
+import { addTVtoList } from "../../assets/domain/apiClient";
 
 export const WatchListCard = ({ id }) => {
   const tv = ResultOfSearchingById(id);
@@ -28,8 +30,21 @@ export const WatchListCard = ({ id }) => {
     setVisibilityDev("hidden");
   }
 
+  useEffect(() => {
+    if (statusTV) {
+      const list_id = localStorage.getItem(`idList${statusTV}`);
+      if (list_id) {
+        addTVtoList(list_id, tv.id);
+      }
+    }
+  }, [statusTV, id]);
+
   return (
     <>
+      {console.log(localStorage.getItem(`session_id`))}
+      {console.log(id)}
+      {console.log(localStorage.getItem(`statusTV-${id}`))}
+      {console.log(localStorage.getItem(`idList${statusTV}`))}
       <img src={tv?.image} alt={tv.name} />
       <div className="nameBox">
         <p>{tv?.voteAverage}</p>
@@ -44,42 +59,14 @@ export const WatchListCard = ({ id }) => {
         <p>Episode runtime: {tv?.episodeRuntime}</p>
       </div>
       <div className="radiobuttons" style={{ visibility: visibilityInput }}>
-        <label>
-          <input
-            type="radio"
-            name={`statusTV-${id}`}
-            value="Want to watch"
-            onChange={handleRadioChange}
-          />
-          Want to watch
-        </label>
-        <label>
-          <input
-            type="radio"
-            name={`statusTV-${id}`}
-            value="Watching"
-            onChange={handleRadioChange}
-          />
-          Watching
-        </label>
-        <label>
-          <input
-            type="radio"
-            name={`statusTV-${id}`}
-            value="Completed"
-            onChange={handleRadioChange}
-          />
-          Completed
-        </label>
-        <label>
-          <input
-            type="radio"
-            name={`statusTV-${id}`}
-            value="Dropped"
-            onChange={handleRadioChange}
-          />
-          Dropped
-        </label>
+        <LabelAndInput
+          id={id}
+          value="WantToWatch"
+          onClick={handleRadioChange}
+        />
+        <LabelAndInput id={id} value="Watching" onClick={handleRadioChange} />
+        <LabelAndInput id={id} value="Completed" onClick={handleRadioChange} />
+        <LabelAndInput id={id} value="Dropped" onClick={handleRadioChange} />
       </div>
       <div
         className="status"
@@ -88,6 +75,13 @@ export const WatchListCard = ({ id }) => {
       >
         {statusTV}{" "}
       </div>
+      {statusTV === "Watching" && (
+        <div className="watching">
+          {tv?.seasons?.map((season) => (
+            <p key={season?.seasonNumber}>{season?.name}</p>
+          ))}
+        </div>
+      )}
     </>
   );
 };
