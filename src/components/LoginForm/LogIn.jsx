@@ -18,11 +18,6 @@ export const LogIn = () => {
 
   const { isAuthenticated, setIsAuthenticated } = useAuthContext();
 
-  // const [ListWatching, setListWatching] = useState(null);
-  // const [ListWantToWatch, setListWantToWatch] = useState(null);
-  // const [ListCompleted, setListCompleted] = useState(null);
-  // const [ListDropped, setListDropped] = useState(null);
-
   const handleLogIn = async (e) => {
     e.preventDefault();
     if (!username || !password) {

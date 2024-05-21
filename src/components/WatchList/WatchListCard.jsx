@@ -1,7 +1,7 @@
 import { ResultOfSearchingById } from "../../assets/utils/ResultOfSearchingById";
 import { useState, useEffect } from "react";
 import { LabelAndInput } from "./LabelAndInput";
-import { addTVtoList } from "../../assets/domain/apiClient";
+import { addTVtoList, removeTVfromList } from "../../assets/domain/apiClient";
 
 export const WatchListCard = ({ id }) => {
   const tv = ResultOfSearchingById(id);
@@ -20,7 +20,29 @@ export const WatchListCard = ({ id }) => {
   }, [statusTV, id]);
 
   function handleRadioChange(event) {
-    setStatusTV(event.target.value);
+    const newStatus = event.target.value.replace(/\s+/g, "");
+    const oldStatus = statusTV.replace(/\s+/g, "");
+
+    if (newStatus !== oldStatus) {
+      const oldListId = localStorage.getItem(`idList${oldStatus}`);
+      if (oldListId) {
+        removeTVfromList(oldListId, id)
+          .then((response) => {
+            console.log("Removed from old list:", response);
+          })
+          .catch((error) => {
+            console.error("Error removing from old list:", error);
+          });
+      }
+
+      const newListId = localStorage.getItem(`idList${newStatus}`);
+      if (newListId) {
+        addTVtoList(newListId, id);
+      }
+
+      setStatusTV(event.target.value);
+    }
+
     setVisibilityInput("hidden");
     setVisibilityDev("visible");
   }
@@ -30,21 +52,18 @@ export const WatchListCard = ({ id }) => {
     setVisibilityDev("hidden");
   }
 
-  useEffect(() => {
-    if (statusTV) {
-      const list_id = localStorage.getItem(`idList${statusTV}`);
-      if (list_id) {
-        addTVtoList(list_id, tv.id);
-      }
-    }
-  }, [statusTV, id]);
+  // useEffect(() => {
+  //   const cleanedStatusTV = statusTV?.replace(/\s/g, "");
+  //   if (statusTV) {
+  //     const list_id = localStorage.getItem(`idList${cleanedStatusTV}`);
+  //     if (list_id) {
+  //       addTVtoList(list_id, tv.id);
+  //     }
+  //   }
+  // }, [statusTV, id]);
 
   return (
     <>
-      {console.log(localStorage.getItem(`session_id`))}
-      {console.log(id)}
-      {console.log(localStorage.getItem(`statusTV-${id}`))}
-      {console.log(localStorage.getItem(`idList${statusTV}`))}
       <img src={tv?.image} alt={tv.name} />
       <div className="nameBox">
         <p>{tv?.voteAverage}</p>
@@ -61,7 +80,7 @@ export const WatchListCard = ({ id }) => {
       <div className="radiobuttons" style={{ visibility: visibilityInput }}>
         <LabelAndInput
           id={id}
-          value="WantToWatch"
+          value="Want To Watch"
           onClick={handleRadioChange}
         />
         <LabelAndInput id={id} value="Watching" onClick={handleRadioChange} />

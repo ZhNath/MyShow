@@ -32,7 +32,7 @@ export const LogInButton = () => {
       >
         <Link to="/watchlist">Watchlist</Link>
         <hr />
-        <Link to="/watchlist/Want to watch" style={{ fontSize: "0.8rem" }}>
+        <Link to="/watchlist/Want To Watch" style={{ fontSize: "0.8rem" }}>
           Want to watch
         </Link>
         <Link to="/watchlist/Watching" style={{ fontSize: "0.8rem" }}>

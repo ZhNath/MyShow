@@ -1,5 +1,5 @@
-import { useAuthContext } from "../../globalContext/AuthContext";
-import { WatchListCard } from "./WatchListCard";
+import { useAuthContext } from "../globalContext/AuthContext";
+import { WatchListCard } from "../components/WatchList/WatchListCard";
 import { useParams } from "react-router-dom";
 
 export const FilteredByStatusWatchList = () => {

@@ -139,11 +139,26 @@ export const addTVtoList = async (list_id, media_id) => {
       accept: "application/json",
       "content-type": "application/json",
     },
-    media_type: "tv",
-    body: JSON.stringify({ media_id: media_id }),
+    body: JSON.stringify({ items: [{ media_type: "tv", media_id: media_id }] }),
   };
   const session_id = localStorage.getItem(`session_id`);
-  const _url = `${BASE_URL}/list/${list_id}/add_item?api_key=${API_KEY}&session_id=${session_id}`;
+  const _url = `https://api.themoviedb.org/4/list/${list_id}/items?api_key=${API_KEY}&session_id=${session_id}`;
+  const response = await fetch(_url, requestOptions);
+  const data = await response.json();
+  return data;
+};
+
+export const removeTVfromList = async (list_id, media_id) => {
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      accept: "application/json",
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ items: [{ media_type: "tv", media_id: media_id }] }),
+  };
+  const session_id = localStorage.getItem(`session_id`);
+  const _url = `https://api.themoviedb.org/4/list/${list_id}/items?api_key=${API_KEY}&session_id=${session_id}`;
   const response = await fetch(_url, requestOptions);
   const data = await response.json();
   return data;
