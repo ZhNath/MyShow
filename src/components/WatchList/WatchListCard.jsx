@@ -37,7 +37,13 @@ export const WatchListCard = ({ id }) => {
 
       const newListId = localStorage.getItem(`idList${newStatus}`);
       if (newListId) {
-        addTVtoList(newListId, id);
+        addTVtoList(newListId, id)
+          .then((response) => {
+            console.log("Added to old list:", response);
+          })
+          .catch((error) => {
+            console.error("Error adding to old list:", error);
+          });
       }
 
       setStatusTV(event.target.value);
@@ -52,16 +58,6 @@ export const WatchListCard = ({ id }) => {
     setVisibilityDev("hidden");
   }
 
-  // useEffect(() => {
-  //   const cleanedStatusTV = statusTV?.replace(/\s/g, "");
-  //   if (statusTV) {
-  //     const list_id = localStorage.getItem(`idList${cleanedStatusTV}`);
-  //     if (list_id) {
-  //       addTVtoList(list_id, tv.id);
-  //     }
-  //   }
-  // }, [statusTV, id]);
-
   return (
     <>
       <img src={tv?.image} alt={tv.name} />
@@ -75,7 +71,11 @@ export const WatchListCard = ({ id }) => {
       <div>
         <p>Episodes: {tv?.numberOfEpisodes}</p>
         <p>Seasons: {tv?.numberOfSeasons}</p>
-        <p>Episode runtime: {tv?.episodeRuntime}</p>
+        <p>
+          {console.log(tv)}
+          {tv?.episodeRuntime?.[0] &&
+            `Episode runtime: ${tv.episodeRuntime} min`}
+        </p>
       </div>
       <div className="radiobuttons" style={{ visibility: visibilityInput }}>
         <LabelAndInput
