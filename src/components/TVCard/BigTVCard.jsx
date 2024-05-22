@@ -1,5 +1,4 @@
 import { ResultOfSearchingById } from "../../assets/utils/ResultOfSearchingById";
-import "../../styles/index.scss";
 import { Center } from "./Center";
 import { LeftSide } from "./LeftSide";
 import { RightSide } from "./RightSide";

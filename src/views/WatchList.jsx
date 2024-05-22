@@ -1,5 +1,4 @@
 import { useAuthContext } from "../globalContext/AuthContext";
-import "../styles/index.scss";
 import { WatchListCard } from "../components/WatchList/WatchListCard";
 
 export const WatchList = () => {

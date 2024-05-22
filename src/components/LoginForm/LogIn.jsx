@@ -1,4 +1,3 @@
-import "../../styles/index.scss";
 import { useAuthContext } from "../../globalContext/AuthContext";
 import {
   makeToken,

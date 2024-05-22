@@ -1,4 +1,3 @@
-import "../../styles/index.scss";
 import { Input_DropDown } from "./Input_DropDown";
 import { LogInButton } from "./LogInButton";
 import { BackButton } from "./BackButton";
