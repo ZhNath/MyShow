@@ -14,6 +14,10 @@ export const WatchListCard = ({ id }) => {
 
   const [visibilityInput, setVisibilityInput] = useState(initialVisibility);
   const [visibilityDev, setVisibilityDev] = useState(!initialVisibility);
+  const [visibilitySeasons, setVisibilitySeasons] = useState(false);
+  const [isCurtain, setIsCurtain] = useState(false);
+  const [visibilityEpisodes, setVisibilityEpisodes] = useState(false);
+  const [isStrikethrough, setIsStrikethrough] = useState();
 
   useEffect(() => {
     localStorage.setItem(`statusTV-${id}`, statusTV);
@@ -48,7 +52,6 @@ export const WatchListCard = ({ id }) => {
 
       setStatusTV(event.target.value);
     }
-
     setVisibilityInput("hidden");
     setVisibilityDev("visible");
   }
@@ -58,6 +61,10 @@ export const WatchListCard = ({ id }) => {
     setVisibilityDev("hidden");
   }
 
+  function handleOnClickSeasons() {
+    setVisibilitySeasons(true);
+    setIsCurtain(true);
+  }
   return (
     <>
       <img src={tv?.image} alt={tv.name} />
@@ -66,13 +73,12 @@ export const WatchListCard = ({ id }) => {
         <h3>{tv?.name}</h3>
         <span>{tv?.statusbar}</span>
       </div>
-      <span>{tv?.date}</span>
+      <span>On Air: {tv?.date}</span>
       <span>{tv?.overview}</span>
       <div>
         <p>Episodes: {tv?.numberOfEpisodes}</p>
         <p>Seasons: {tv?.numberOfSeasons}</p>
         <p>
-          {console.log(tv)}
           {tv?.episodeRuntime?.[0] &&
             `Episode runtime: ${tv.episodeRuntime} min`}
         </p>
@@ -94,13 +100,37 @@ export const WatchListCard = ({ id }) => {
       >
         {statusTV}{" "}
       </div>
+      {/* ***************************************** */}
       {statusTV === "Watching" && (
-        <div className="watching">
+        <span className="seasons" onClick={handleOnClickSeasons}>
+          Track Episodes{" "}
+        </span>
+      )}
+      <div className={`${isCurtain ? "curtain" : ""}`}></div>
+      {/* ********************************************* */}
+      <div className={`seasonsBox ${visibilitySeasons ? "visible" : ""}`}>
+        <h3>Check watched episodes</h3>
+        <div>
           {tv?.seasons?.map((season) => (
-            <p key={season?.seasonNumber}>{season?.name}</p>
+            <ul key={season?.seasonNumber}>
+              <label htmlFor="ul">{season?.name}</label>
+              <input type="checkbox" name="ul" id="ul" />
+
+              {Array.from({ length: season?.episodeCount }, (_, i) => (
+                <li key={i + 1}>
+                  <label htmlFor={`li-${i + 1}`}>Episode {i + 1}</label>
+                  <input
+                    type="checkbox"
+                    name={`li-${i + 1}`}
+                    id={`li-${i + 1}`}
+                    onChange={(prev) => setIsStrikethrough(...prev, !prev)}
+                  />
+                </li>
+              ))}
+            </ul>
           ))}
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -11,6 +11,7 @@
   box-shadow: 10px 10px 15px rgba(141, 152, 218, 0.2),
     inset 3px 3px 15px rgba(80, 95, 188, 0.19);
   font-weight: 100;
+  position: relative;
 }
 
 .watchListCard img {
@@ -91,18 +92,101 @@
   font-weight: bold;
 }
 
-.watching {
-  grid-column: 2 / span 2;
+.seasons {
+  grid-column: 1 / span 1;
   grid-row: 5 / span 1;
   justify-self: start;
-  align-self: end;
+  align-self: start;
+
   color: orange;
   font-weight: bold;
   margin-left: 1rem;
+  margin-top: 1rem;
+}
+
+.seasonsBox {
+  width: 0;
+  height: 0;
+
+  background-color: rgba(141, 152, 218);
+  opacity: 0;
+
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+
+  padding: 1rem;
+
+  transform: translate(-50%, -50%);
+  transition: 1s all ease-in-out;
+
+  pointer-events: none;
+}
+
+.seasonsBox h3 {
+  color: rgb(44, 44, 44);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.seasonsBox.visible {
+  opacity: 1;
+  width: 300px;
+  height: 400px;
+
+  overflow-y: scroll;
+  pointer-events: auto;
+}
+
+.curtain {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.8;
+  z-index: 9;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: 1s all ease-in-out;
+}
+
+.seasonsBox ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  color: orange;
+
+  transition: 1s all ease-in-out;
 
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-auto-flow: column;
-  column-gap: 3rem;
-  row-gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.seasonsBox ul li {
+  margin-left: 1rem;
+  background-color: rgba(141, 152, 218, 0.5);
+  border-radius: 10px;
+  color: rgb(44, 44, 44);
+  font-weight: normal;
+  transition: 1s all ease-in-out;
+
+  grid-column: 1 / span 2;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+}
+
+.seasonsBox ul label,
+.seasonsBox li label {
+  grid-column: 1 / span 1;
+}
+
+.seasonsBox ul input,
+.seasonsBox li input {
+  grid-column: 2 / span 1;
+  justify-self: start;
 }
