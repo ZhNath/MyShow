@@ -1,0 +1,60 @@
+@import "../base/_variables.scss";
+@import "../base/_mixins.scss";
+
+.loginBox {
+  @include size(30vw, calc(100vh - 4rem), $background_primary);
+  margin: auto;
+  margin-top: $margin_big;
+  @include flex-col(0, start, center);
+}
+
+.loginBox form {
+  @include flex-col(0, center, start);
+}
+
+.loginBox form label {
+  margin-top: $margin_big;
+  margin-bottom: 0.5rem;
+}
+
+.loginBox form input {
+  @include size(20rem, 1.5rem, $background_third);
+}
+
+.loginBox form span {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: start;
+  font-size: 0.6rem;
+  line-height: 1.2rem;
+}
+
+.loginBox form div.submit {
+  margin-top: 1rem;
+  @include size(20rem, 2rem);
+
+  color: #fff;
+
+  @include flex-row(space-between);
+
+}
+
+.loginBox form button {
+  margin-top: 1rem;
+  @include size(10rem, 2rem);
+}
+
+.loginBox form button:first-child {
+  background-color: $background_second;
+  color: $color_primary;
+}
+
+.loginBox form button:first-child:disabled {
+  background-color: $background_third;
+  color: $color_secondary;
+}
+
+.loginBox form button:last-child {
+  background-color: transparent;
+  color: $color_primary;
+}

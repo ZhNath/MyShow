@@ -6,39 +6,38 @@
 }
 
 .smallCardBox img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  grid-area: 1/1/3/2;
+  @include size(100%, auto, cover);
+  @include grid-area-num(1, 3, 1, 2);
 }
 
 .smallCardBox h4 {
-  grid-area: 1/2/2/4;
+  @include grid-area-num(1, 2, 2, 4);
   align-self: flex-start;
   margin-left: 1rem;
-  color: black;
+  color: $color_secondary;
 }
 
 .smallCardBox .rating {
-  grid-area: 2/2/3/3;
+  @include grid-area-num(2, 3, 2, 3);
   align-self: flex-start;
   margin-left: 1rem;
-  color: green;
+  color: $color_green;
   font-weight: bold;
+
 }
 
 .smallCardBox .years {
-  grid-area: 2/3/3/4;
+  @include grid-area-num(2, 3, 3, 4);
   align-self: flex-start;
   margin-left: 1rem;
-  color: gray;
+  color: $color_gray;
 }
 
 .smallCardBox:hover {
   cursor: pointer;
-  background-color: #cecef7;
+  background-color: $background_hover;
 }
 
 .smallCardBox:hover h4 {
-  color: rgb(212, 125, 4);
+  color: $color_orange;
 }

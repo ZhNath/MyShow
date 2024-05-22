@@ -1,15 +1,14 @@
+import "../../styles/index.scss";
+import { useAuthContext } from "../../globalContext/AuthContext";
 import {
   makeToken,
   makeSession,
   makeAccount,
   validateUser,
-  getWatchList,
   createList,
 } from "../../assets/domain/apiClient";
-import { useState } from "react";
-import "../../styles/LogIn.css";
-import { useAuthContext } from "../../globalContext/AuthContext";
 import { FormElements } from "./FormElements";
+import { useState } from "react";
 
 export const LogIn = () => {
   const [username, setUsername] = useState("");

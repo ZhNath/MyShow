@@ -1,0 +1,87 @@
+.tvCard {
+  @include size(80vw, auto);
+  min-height: 100vh;
+
+  margin: $margin_big auto;
+
+  padding-bottom: 2rem;
+  box-shadow: 10px 10px 25px 5px rgba(141, 152, 218, 0.2),
+    inset 3px 3px 15px rgba(80, 95, 188, 0.19);
+
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr;
+}
+
+.tvCard .left {
+  margin: 1rem;
+  @include flex-col(0, start, center);
+}
+
+.tvCard img {
+  @include size(100%, auto, cover);
+}
+
+.tvCard .center {
+  @include flex-col(1rem, start, start);
+}
+
+.tvCard .center h1 {
+  font-size: 2rem;
+}
+
+.tvCard .rating {
+  padding: 4px;
+  border: 1px solid $background_third;
+}
+
+.tvCard .genresBox {
+  @include flex-row(2rem, start, baseline);
+}
+
+.tvCard .toFromWatch {
+  background-color: $color_orange;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.2rem 0.5rem;
+}
+
+.tvCard .aboutFilm {
+  @include flex-col(1rem, start, start);
+  margin-top: $margin_big;
+}
+
+.tvCard .aboutFilm span {
+  font-weight: 100;
+}
+
+.tvCard .right {
+  @include flex-col(1rem, start, center);
+}
+
+.tvCard .right .vote {
+  @include size(60px, 60px);
+  @include font(1.2rem, inherit, bold);
+  border: 4px solid $color_green;
+  border-radius: 50%;
+  @include flex-col(0, center, center);
+
+}
+
+.tvCard .right p,
+h3.cast {
+  text-align: center;
+}
+
+
+div.cast {
+  @include size(80vw, auto);
+  @include flex-row(1rem, center, start);
+  margin: 2rem auto;
+  overflow: auto;
+  font-weight: 300;
+}
+
+.cast-item {
+  @include flex-col(0.5rem, center, center);
+  text-align: center;
+}

@@ -1,0 +1,16 @@
+@import './base/variables.scss';
+@import './base/settings.scss';
+@import './base/mixins.scss';
+
+body {
+  background-color: $background_primary;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@import './components/Header.scss';
+@import './components/LogIn.scss';
+@import './components/SmallCard.scss';
+@import './components/BigCard.scss';
+@import './components/WatchListCard.scss';

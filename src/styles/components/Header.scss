@@ -1,0 +1,68 @@
+@import "../base/_variables.scss";
+@import "../base/_mixins.scss";
+
+.header {
+  @include size(100vw, 4rem, $background_second);
+
+  display: grid;
+  grid-template-columns: 2fr 1fr 7fr 1fr;
+  align-items: center;
+
+  position: relative;
+}
+
+.header h1 {
+  @include font(1.5rem, $color_primary, bold);
+
+  margin-left: $margin_big;
+  justify-self: start;
+}
+
+.header .back-button {
+  justify-self: start;
+}
+
+.header input {
+  @include size(50%, 2rem, $background_third);
+  justify-self: center;
+  color: $color_secondary;
+}
+
+.header .loginButton {
+  justify-self: start;
+  margin-right: 4rem;
+}
+
+
+.header .dropdown {
+  grid-column: 3/4;
+  justify-self: center;
+  padding: 1rem;
+  color: $color_secondary;
+
+
+  @include size(50%, auto, $background_third);
+  min-height: 300px;
+
+  @include position(absolute, n, 4rem, n, n);
+  z-index: 1;
+
+  border-radius: 10px;
+
+  display: grid;
+  grid-template-rows: repeat(auto, 4rem);
+  justify-content: start;
+  gap: 2rem;
+}
+
+.header .logdropdown {
+  grid-column: 4/5;
+
+  width: 100%;
+  min-height: 150px;
+
+}
+
+.linie {
+  @include size(100%, 1px, $color_secondary);
+}

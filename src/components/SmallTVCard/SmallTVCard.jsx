@@ -1,6 +1,6 @@
 import { ResultOfSearchingByName } from "../../assets/utils/ResultOfSearchingByName";
 import { Link } from "react-router-dom";
-import "../../styles/smallCard.css";
+import "../../styles/index.scss";
 
 export const SmallTVCard = ({ item, setIsDropDown }) => {
   const tvData = ResultOfSearchingByName(item);

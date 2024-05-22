@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../globalContext/AuthContext";
 import { useState } from "react";
-import { getWatchList } from "../../assets/domain/apiClient";
 import { DropDown } from "../../assets/utils/DropDown";
 
 export const LogInButton = () => {
@@ -14,7 +13,7 @@ export const LogInButton = () => {
     <Link to="/login"> Login</Link>
   ) : (
     <>
-      <div
+      <button
         className="loginButton"
         onClick={() => {
           setIsDropDown((prev) => {
@@ -23,7 +22,7 @@ export const LogInButton = () => {
         }}
       >
         {username}
-      </div>
+      </button>
 
       <DropDown
         isDropDown={isDropDown}
@@ -31,7 +30,7 @@ export const LogInButton = () => {
         classes="dropdown logdropdown"
       >
         <Link to="/watchlist">Watchlist</Link>
-        <hr />
+        <div className="linie"></div>
         <Link to="/watchlist/Want To Watch" style={{ fontSize: "0.8rem" }}>
           Want to watch
         </Link>
@@ -44,11 +43,12 @@ export const LogInButton = () => {
         <Link to="/watchlist/Dropped" style={{ fontSize: "0.8rem" }}>
           Dropped
         </Link>
-        <hr />
+        <div className="linie"></div>
+
         <div>Edit Profile</div>
-        <hr />
+        <div className="linie"></div>
+
         <div
-          className="logdropdown-item"
           onClick={() => {
             localStorage.removeItem("session_id");
             localStorage.removeItem("username");

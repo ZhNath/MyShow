@@ -1,5 +1,5 @@
 import { dataFetcher } from "../domain/apiClient";
-import "../../styles/Card.css";
+// import "../../styles/index.scss";
 import { useEffect, useState } from "react";
 import { IMG_URL } from "../domain/apiClient";
 
