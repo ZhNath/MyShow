@@ -1,8 +1,7 @@
 .main {
       @include size (80vw, auto, $background-primary);
-      margin: auto;
-      margin-top: $margin_big;
-
+      margin: $margin_big;
+      margin-left: auto;
 }
 
 .main_container {

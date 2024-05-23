@@ -4,9 +4,7 @@ import { Main } from "../components/Main/Main";
 function Homepage() {
   return (
     <>
-      <Link to="/">
-        <Main />
-      </Link>
+      <Main />
     </>
   );
 }

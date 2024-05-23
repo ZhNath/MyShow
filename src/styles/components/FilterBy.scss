@@ -1,0 +1,9 @@
+.filter-section {
+      @include flex-row(1rem, space-between, center)
+}
+
+.filter-section input,
+.filter-section input::placeholder {
+      height: 1.5rem;
+      color: $color_secondary;
+}

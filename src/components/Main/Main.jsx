@@ -27,7 +27,7 @@ export const Main = () => {
             }}
           >
             <img src={`${IMG_URL}${tv.poster_path}`} alt={tv.name} />
-            <h4>{tv.name}</h4>
+            <h3>{tv.name}</h3>
           </Link>
         ))}
       </div>

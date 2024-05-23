@@ -163,3 +163,12 @@ export const removeTVfromList = async (list_id, media_id) => {
   const data = await response.json();
   return data;
 };
+
+export const genresList = async () => {
+  const response = await fetch(
+    `${BASE_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await response.json();
+  console.log(data.genres);
+  return data.genres;
+};
