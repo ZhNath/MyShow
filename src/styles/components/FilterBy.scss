@@ -1,5 +1,6 @@
 .filter-section {
-      @include flex-row(1rem, space-between, center)
+      @include flex-row(1rem, space-between, center);
+      @include size(80vw, auto, none)
 }
 
 .filter-section input,

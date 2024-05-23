@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const Main = () => {
-  const [pop, setPop] = useState();
+  const [gallery, setGallery] = useState();
 
   useEffect(() => {
     const popular = async () => {
       const data = await dataFetcher("tv/popular?");
-      setPop(data);
+      setGallery(data);
     };
     popular();
   }, []);
@@ -17,7 +17,7 @@ export const Main = () => {
   return (
     <div className="main">
       <div className="main_container">
-        {pop?.results?.map((tv) => (
+        {gallery?.results?.map((tv) => (
           <Link
             to={`/filter/${tv.id}`}
             key={tv.id}

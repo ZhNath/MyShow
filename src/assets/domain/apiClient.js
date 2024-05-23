@@ -172,3 +172,11 @@ export const genresList = async () => {
   console.log(data.genres);
   return data.genres;
 };
+
+export const fetchFilterData = async (byParam) => {
+  const response = await fetch(
+    `${BASE_URL}/discover/tv?${byParam}?api_key=${API_KEY}&language=en-US&page=1`
+  );
+  const data = await response.json();
+  return data;
+};
