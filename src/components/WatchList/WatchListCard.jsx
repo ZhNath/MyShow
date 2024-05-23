@@ -1,7 +1,10 @@
 import { ResultOfSearchingById } from "../../assets/utils/ResultOfSearchingById";
+import { FromListToList } from "../../assets/utils/FromListToList";
+import { getTvStateFromLocalStorage } from "../../assets/utils/LocalStorage";
+import { saveTvStateToLocalStorage } from "../../assets/utils/LocalStorage";
 import { useState, useEffect } from "react";
 import { LabelAndInput } from "./LabelAndInput";
-import { addTVtoList, removeTVfromList } from "../../assets/domain/apiClient";
+import { EpisodeTracker } from "./EpisodeTracker";
 
 export const WatchListCard = ({ id }) => {
   const tv = ResultOfSearchingById(id);
@@ -9,48 +12,59 @@ export const WatchListCard = ({ id }) => {
   const [statusTV, setStatusTV] = useState(
     localStorage.getItem(`statusTV-${id}`) || ""
   );
-
-  const initialVisibility = statusTV ? "hidden" : "visible";
-
-  const [visibilityInput, setVisibilityInput] = useState(initialVisibility);
-  const [visibilityDev, setVisibilityDev] = useState(!initialVisibility);
-  const [visibilitySeasons, setVisibilitySeasons] = useState(false);
-  const [isCurtain, setIsCurtain] = useState(false);
-  const [visibilityEpisodes, setVisibilityEpisodes] = useState(false);
-  const [isStrikethrough, setIsStrikethrough] = useState();
-
   useEffect(() => {
     localStorage.setItem(`statusTV-${id}`, statusTV);
   }, [statusTV, id]);
 
+  const [tvState, setTVState] = useState({});
+  useEffect(() => {
+    const savedState = getTvStateFromLocalStorage();
+    setTVState(savedState);
+  }, []);
+  // ------------------------------------------------------
+  const initialVisibility = statusTV ? "hidden" : "visible";
+
+  const [visibilityInput, setVisibilityInput] = useState(initialVisibility);
+  const [visibilityDev, setVisibilityDev] = useState(!initialVisibility);
+
+  const [visibilitySeasons, setVisibilitySeasons] = useState(false);
+  const [isCurtain, setIsCurtain] = useState(false);
+  // --------------------------------------------------------
   function handleRadioChange(event) {
     const newStatus = event.target.value.replace(/\s+/g, "");
     const oldStatus = statusTV.replace(/\s+/g, "");
 
     if (newStatus !== oldStatus) {
-      const oldListId = localStorage.getItem(`idList${oldStatus}`);
-      if (oldListId) {
-        removeTVfromList(oldListId, id)
-          .then((response) => {
-            console.log("Removed from old list:", response);
-          })
-          .catch((error) => {
-            console.error("Error removing from old list:", error);
-          });
-      }
-
-      const newListId = localStorage.getItem(`idList${newStatus}`);
-      if (newListId) {
-        addTVtoList(newListId, id)
-          .then((response) => {
-            console.log("Added to old list:", response);
-          })
-          .catch((error) => {
-            console.error("Error adding to old list:", error);
-          });
-      }
-
+      FromListToList({ id, newStatus, oldStatus });
       setStatusTV(event.target.value);
+
+      if (newStatus === "Watching") {
+        const newState = {
+          ...tvState,
+          [id]: {
+            seasons: tv?.seasons?.map((season) => ({
+              name: season.name,
+              episodes: Array.from(
+                { length: season?.episodeCount },
+                (_, i) => ({
+                  episodeNumber: i + 1,
+                  watched: false,
+                })
+              ),
+              isChecked: false,
+            })),
+          },
+        };
+        setTVState(newState);
+        saveTvStateToLocalStorage(newState);
+      }
+
+      if (oldStatus === "Watching") {
+        const newState = { ...tvState };
+        delete newState[id];
+        setTVState(newState);
+        saveTvStateToLocalStorage(newState);
+      }
     }
     setVisibilityInput("hidden");
     setVisibilityDev("visible");
@@ -65,6 +79,7 @@ export const WatchListCard = ({ id }) => {
     setVisibilitySeasons(true);
     setIsCurtain(true);
   }
+
   return (
     <>
       <img src={tv?.image} alt={tv.name} />
@@ -108,29 +123,12 @@ export const WatchListCard = ({ id }) => {
       )}
       <div className={`${isCurtain ? "curtain" : ""}`}></div>
       {/* ********************************************* */}
-      <div className={`seasonsBox ${visibilitySeasons ? "visible" : ""}`}>
-        <h3>Check watched episodes</h3>
-        <div>
-          {tv?.seasons?.map((season) => (
-            <ul key={season?.seasonNumber}>
-              <label htmlFor="ul">{season?.name}</label>
-              <input type="checkbox" name="ul" id="ul" />
-
-              {Array.from({ length: season?.episodeCount }, (_, i) => (
-                <li key={i + 1}>
-                  <label htmlFor={`li-${i + 1}`}>Episode {i + 1}</label>
-                  <input
-                    type="checkbox"
-                    name={`li-${i + 1}`}
-                    id={`li-${i + 1}`}
-                    onChange={(prev) => setIsStrikethrough(...prev, !prev)}
-                  />
-                </li>
-              ))}
-            </ul>
-          ))}
-        </div>
-      </div>
+      <EpisodeTracker
+        tv={tv}
+        visibilitySeasons={visibilitySeasons}
+        tvState={tvState}
+        setTVState={setTVState}
+      />
     </>
   );
 };
