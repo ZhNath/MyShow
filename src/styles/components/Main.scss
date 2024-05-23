@@ -1,0 +1,24 @@
+.main {
+      @include size (80vw, auto, $background-primary);
+      margin: auto;
+      margin-top: $margin_big;
+
+}
+
+.main_container {
+      @include size (100%, auto, $background-primary);
+      @include flex-row (1rem, center, center, wrap);
+}
+
+.main_card {
+      @include size (9rem, 18rem, $background-primary);
+      @include flex-col (1rem, start, center);
+      // @include shadow;
+      // @include border-radius(1rem);
+      // @include padding(1rem);
+      text-align: center;
+}
+
+.main_card img {
+      @include size (100%, auto, cover);
+}

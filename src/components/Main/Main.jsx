@@ -1,5 +1,6 @@
 import { IMG_URL } from "../../assets/domain/apiClient";
 import { dataFetcher } from "../../assets/domain/apiClient";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export const Main = () => {
@@ -14,13 +15,22 @@ export const Main = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${IMG_URL}${pop?.results?.[0]?.backdrop_path})`,
-        width: "100vw",
-        height: "100vh",
-        backgroundSize: "cover",
-      }}
-    ></div>
+    <div className="main">
+      <div className="main_container">
+        {pop?.results?.map((tv) => (
+          <Link
+            to={`/filter/${tv.id}`}
+            key={tv.id}
+            className="main_card"
+            style={{
+              border: "1px solid red",
+            }}
+          >
+            <img src={`${IMG_URL}${tv.poster_path}`} alt={tv.name} />
+            <h4>{tv.name}</h4>
+          </Link>
+        ))}
+      </div>
+    </div>
   );
 };

@@ -15,6 +15,14 @@
       gap: $gap
 }
 
+@mixin flex ($gap: 0, $justify: center, $align: center, $wrap: nowrap) {
+      display: flex;
+      justify-content: $justify;
+      align-items: $align;
+      flex-wrap: $wrap;
+      gap: $gap
+}
+
 @mixin grid-area-num($rowstart, $rowend , $colstart, $colend) {
       grid-area: #{$rowstart}/#{$colstart}/#{$rowend}/#{$colend};
 }
