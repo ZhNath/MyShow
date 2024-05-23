@@ -80,6 +80,11 @@ export const WatchListCard = ({ id }) => {
     setIsCurtain(true);
   }
 
+  function handleOnClickCurtain() {
+    setVisibilitySeasons(false);
+    setIsCurtain(false);
+  }
+
   return (
     <>
       <img src={tv?.image} alt={tv.name} />
@@ -121,7 +126,10 @@ export const WatchListCard = ({ id }) => {
           Track Episodes{" "}
         </span>
       )}
-      <div className={`${isCurtain ? "curtain" : ""}`}></div>
+      <div
+        className={`${isCurtain ? "curtain" : ""}`}
+        onClick={handleOnClickCurtain}
+      ></div>
       {/* ********************************************* */}
       <EpisodeTracker
         tv={tv}

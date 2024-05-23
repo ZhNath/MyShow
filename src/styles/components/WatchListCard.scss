@@ -144,11 +144,11 @@
 
 .seasonsBox ul {
   @include font (inherit, $color_orange, bold);
-  transition: 1s all ease-in-out;
+  // transition: 1s all ease-in-out;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+  grid-template-columns: auto 1fr;
+  column-gap: 0.5rem;
 }
 
 .seasonsBox ul li {
@@ -160,18 +160,30 @@
   grid-column: 1 / span 2;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 1rem;
 
+  max-height: 2rem;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 1s ease-out, opacity 1s ease-out;
 }
 
 .seasonsBox ul label,
 .seasonsBox li label {
-  grid-column: 1 / span 1;
+  grid-column: 1;
 }
 
 .seasonsBox ul input,
 .seasonsBox li input {
-  grid-column: 2 / span 1;
+  grid-column: 2;
   justify-self: start;
+}
+
+.seasonsBox ul li.strikethrough {
+  text-decoration: line-through;
+  max-height: 0;
+  opacity: 0;
+
 }
