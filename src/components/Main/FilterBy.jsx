@@ -4,6 +4,7 @@ import {
   languagesList,
   fetchFilterData,
 } from "../../assets/domain/apiClient";
+import { FilterButton } from "../Neuro/FilterButton";
 
 export const FilterBy = () => {
   const [genres, setGenres] = useState([]);
@@ -23,7 +24,6 @@ export const FilterBy = () => {
   function Select({ name, options }) {
     const handleFilterChange = async (event) => {
       const selected = event.target.value;
-      // const data = await fetchFilterData(`with_genres=${selected}`);
       const data = await fetchFilterData(`with_original_language=${selected}`);
       setResultList(data);
     };
@@ -41,12 +41,13 @@ export const FilterBy = () => {
   }
 
   return (
-    <>
-      <div className="filter-section">
-        <h3>TV Serial Filter</h3>
-        <Select name="genre" options={genres} />
-        <Select name="language" options={languages} />
-      </div>
-    </>
+    <div className="filter-section">
+      <h3>TV Serial Filter</h3>
+      {genres?.map((genre) => (
+        <FilterButton key={genre?.id} name={genre?.name} />
+      ))}
+
+      <Select name="language" options={languages} />
+    </div>
   );
 };

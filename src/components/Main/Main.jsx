@@ -2,6 +2,7 @@ import { IMG_URL } from "../../assets/domain/apiClient";
 import { dataFetcher } from "../../assets/domain/apiClient";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FilterBy } from "./FilterBy";
 
 export const Main = () => {
   const [gallery, setGallery] = useState();
@@ -16,6 +17,7 @@ export const Main = () => {
 
   return (
     <div className="main">
+      <FilterBy />
       <div className="main_container">
         {gallery?.results?.map((tv) => (
           <Link to={`/filter/${tv.id}`} key={tv.id} className="main_card">

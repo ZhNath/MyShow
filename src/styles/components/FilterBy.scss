@@ -1,10 +1,46 @@
 .filter-section {
-      @include flex-row(1rem, space-between, center);
-      @include size(80vw, auto, none)
+      @include flex-row(1rem, start, start, wrap);
+      align-content: start;
+      margin-bottom: 1rem;
 }
 
 .filter-section input,
 .filter-section input::placeholder {
       height: 1.5rem;
       color: $color_secondary;
+}
+
+.cta {
+      position: relative;
+      transition: all 0.2s ease;
+
+}
+
+.cta:before {
+      content: "";
+      @include position(absolute, 0, 0, 0, 0);
+      display: block;
+      border-radius: 5rem;
+      @include size(2rem, 2rem, $background_second);
+      transition: all 0.3s ease;
+
+}
+
+.cta span {
+      position: relative;
+      letter-spacing: 0.05em;
+      @include font(1rem, $color_primary, 400);
+
+}
+
+.cta:hover:before,
+.cta.selected:before {
+      width: 100%;
+      position: absolute;
+      background: $background_third;
+
+}
+
+.cta:active {
+      transform: scale(0.95);
 }

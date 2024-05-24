@@ -9,7 +9,6 @@ function Root() {
     <>
       <AuthProvider>
         <Header />
-        <FilterBy />
         <Outlet />
         <Footer />
       </AuthProvider>
