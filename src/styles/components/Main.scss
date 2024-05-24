@@ -6,7 +6,7 @@
 
 .main_container {
       @include size (100%, auto, $background-primary);
-      @include flex-row (1rem, center, center, wrap);
+      @include flex-row (1.5rem, center, center, wrap);
 }
 
 .main_card {
@@ -16,6 +16,7 @@
       // @include border-radius(1rem);
       // @include padding(1rem);
       text-align: center;
+      box-shadow: $shadow
 }
 
 .main_card img {

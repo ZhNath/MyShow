@@ -5,8 +5,7 @@
   margin: $margin_big auto;
 
   padding-bottom: 2rem;
-  box-shadow: 10px 10px 25px 5px rgba(141, 152, 218, 0.2),
-    inset 3px 3px 15px rgba(80, 95, 188, 0.19);
+  box-shadow: $shadow;
 
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
@@ -75,7 +74,7 @@ h3.cast {
 
 div.cast {
   @include size(80vw, auto);
-  @include flex-row(1rem, center, start);
+  @include flex-row(1rem, start, start);
   margin: 2rem auto;
   overflow: auto;
   font-weight: 300;

@@ -2,6 +2,7 @@ import { dataFetcher } from "../../assets/domain/apiClient";
 import { useState, useRef } from "react";
 import { DropDown } from "../../assets/utils/DropDown";
 import { DisplayOfSearchingByName } from "../../assets/utils/DisplayOfSearchingByName";
+import { SearchInputInHeader } from "../Neuro/SearchInputInHeader";
 
 export const Input_DropDown = () => {
   const [isDropDown, setIsDropDown] = useState(false);
@@ -24,7 +25,7 @@ export const Input_DropDown = () => {
 
   return (
     <>
-      <input type="text" onChange={(e) => handleOnChange(e)} />
+      <SearchInputInHeader onChange={handleOnChange} />
       <DropDown
         isDropDown={isDropDown}
         setIsDropDown={setIsDropDown}

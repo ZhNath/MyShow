@@ -18,14 +18,7 @@ export const Main = () => {
     <div className="main">
       <div className="main_container">
         {gallery?.results?.map((tv) => (
-          <Link
-            to={`/filter/${tv.id}`}
-            key={tv.id}
-            className="main_card"
-            style={{
-              border: "1px solid red",
-            }}
-          >
+          <Link to={`/filter/${tv.id}`} key={tv.id} className="main_card">
             <img src={`${IMG_URL}${tv.poster_path}`} alt={tv.name} />
             <h3>{tv.name}</h3>
           </Link>

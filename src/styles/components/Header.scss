@@ -5,8 +5,9 @@
   @include size(100vw, 4rem, $background_second);
 
   display: grid;
-  grid-template-columns: 2fr 1fr 7fr 1fr;
+  grid-template-columns: 2fr 1fr 7fr auto 1fr;
   align-items: center;
+  column-gap: 2rem;
 
   position: relative;
 }
@@ -22,12 +23,108 @@
   justify-self: start;
 }
 
-.header input {
-  @include size(50%, 2rem, $background_third);
-  justify-self: center;
-  color: $color_secondary;
+.header .input-wrapper {
+  @include flex(1.5rem, end, center);
+  @include size(100%, 4rem, transparent);
+  position: relative;
+  justify-self: end;
 }
 
+.header .input {
+  @include size(3rem, 3rem, transparent);
+  padding: 1rem;
+  padding-right: 2rem;
+  border-radius: 50%;
+  transition: 0.5s ease-in-out;
+}
+
+.header .input::placeholder {
+  color: $color_gray;
+}
+
+.header .icon {
+  @include flex(0, center, center, none);
+  @include size(3rem, 3rem, transparent);
+  @include position(absolute, n, n, 0px, n);
+  cursor: pointer;
+  border-radius: 50%;
+  pointer-events: painted;
+  transition: 0.2s linear;
+}
+
+.header .icon:focus~.input,
+.header .input:focus {
+  @include size(50%, 2rem, transparent);
+  border-radius: 0px;
+  border-bottom: 3px solid $background_third;
+  transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+}
+
+// ------------------------------
+.ui-switch {
+  /* switch */
+  --switch-bg: rgb(135, 150, 165);
+  --switch-width: 48px;
+  --switch-height: 20px;
+  /* circle */
+  --circle-diameter: 32px;
+  --circle-bg: rgb(0, 56, 146);
+  --circle-inset: calc((var(--circle-diameter) - var(--switch-height)) / 2);
+}
+
+.ui-switch input {
+  display: none;
+}
+
+.slider {
+  @include size(3rem, 1.2rem, $color_gray);
+  border-radius: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.slider .circle {
+  @include size(2rem, 2rem, $color_orange);
+  @include position(absolute, 0, -0.4rem, 0, 0);
+  border-radius: 50%;
+
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTkuMzA1IDEuNjY3VjMuNzVoMS4zODlWMS42NjdoLTEuMzl6bS00LjcwNyAxLjk1bC0uOTgyLjk4Mkw1LjA5IDYuMDcybC45ODItLjk4Mi0xLjQ3My0xLjQ3M3ptMTAuODAyIDBMMTMuOTI3IDUuMDlsLjk4Mi45ODIgMS40NzMtMS40NzMtLjk4Mi0uOTgyek0xMCA1LjEzOWE0Ljg3MiA0Ljg3MiAwIDAwLTQuODYyIDQuODZBNC44NzIgNC44NzIgMCAwMDEwIDE0Ljg2MiA0Ljg3MiA0Ljg3MiAwIDAwMTQuODYgMTAgNC44NzIgNC44NzIgMCAwMDEwIDUuMTM5em0wIDEuMzg5QTMuNDYyIDMuNDYyIDAgMDExMy40NzEgMTBhMy40NjIgMy40NjIgMCAwMS0zLjQ3MyAzLjQ3MkEzLjQ2MiAzLjQ2MiAwIDAxNi41MjcgMTAgMy40NjIgMy40NjIgMCAwMTEwIDYuNTI4ek0xLjY2NSA5LjMwNXYxLjM5aDIuMDgzdi0xLjM5SDEuNjY2em0xNC41ODMgMHYxLjM5aDIuMDg0di0xLjM5aC0yLjA4NHpNNS4wOSAxMy45MjhMMy42MTYgMTUuNGwuOTgyLjk4MiAxLjQ3My0xLjQ3My0uOTgyLS45ODJ6bTkuODIgMGwtLjk4Mi45ODIgMS40NzMgMS40NzMuOTgyLS45ODItMS40NzMtMS40NzN6TTkuMzA1IDE2LjI1djIuMDgzaDEuMzg5VjE2LjI1aC0xLjM5eiIgLz4KPC9zdmc+");
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  transition: left 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, -webkit-transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+  @include flex(0, center, center);
+
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  ;
+}
+
+.slider .circle::before {
+  content: "";
+  position: absolute;
+  @include size(100%, 100%, $background_hover);
+  border-radius: inherit;
+  transition: all 500ms;
+  opacity: 0;
+}
+
+/* actions */
+
+.ui-switch input:checked+.slider .circle {
+  left: calc(100% - 2rem);
+  background-color: $color_secondary;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMjAiIHdpZHRoPSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj4KICAgIDxwYXRoIGZpbGw9IiNmZmYiCiAgICAgICAgZD0iTTQuMiAyLjVsLS43IDEuOC0xLjguNyAxLjguNy43IDEuOC42LTEuOEw2LjcgNWwtMS45LS43LS42LTEuOHptMTUgOC4zYTYuNyA2LjcgMCAxMS02LjYtNi42IDUuOCA1LjggMCAwMDYuNiA2LjZ6IiAvPgo8L3N2Zz4=");
+}
+
+.ui-switch input:active+.slider .circle::before {
+  transition: 0s;
+  opacity: 1;
+  width: 0;
+  height: 0;
+}
+
+// ------------------------------
 .header .loginButton {
   justify-self: start;
   margin-right: 4rem;
@@ -36,7 +133,7 @@
 
 .header .dropdown {
   grid-column: 3/4;
-  justify-self: center;
+  justify-self: end;
   padding: 1rem;
   color: $color_secondary;
 
@@ -56,7 +153,7 @@
 }
 
 .header .logdropdown {
-  grid-column: 4/5;
+  grid-column: 5/6;
 
   width: 100%;
   min-height: 150px;

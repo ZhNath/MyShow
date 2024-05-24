@@ -169,13 +169,28 @@ export const genresList = async () => {
     `${BASE_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`
   );
   const data = await response.json();
-  console.log(data.genres);
   return data.genres;
+};
+
+export const languagesList = async () => {
+  const response = await fetch(
+    `${BASE_URL}/configuration/languages?api_key=${API_KEY}&language=en-US`
+  );
+  const data = await response.json();
+  return data;
 };
 
 export const fetchFilterData = async (byParam) => {
   const response = await fetch(
-    `${BASE_URL}/discover/tv?${byParam}?api_key=${API_KEY}&language=en-US&page=1`
+    `${BASE_URL}/discover/tv?${byParam}&api_key=${API_KEY}`
+  );
+  const data = await response.json();
+  return data;
+};
+
+export const fetchActor = async (name) => {
+  const response = await fetch(
+    `${BASE_URL}/search/person?api_key=${API_KEY}&query=${name}`
   );
   const data = await response.json();
   return data;

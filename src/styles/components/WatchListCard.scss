@@ -8,8 +8,7 @@
   font-weight: 100;
 
   border-radius: 10px;
-  box-shadow: 10px 10px 15px rgba(141, 152, 218, 0.2),
-    inset 3px 3px 15px rgba(80, 95, 188, 0.19);
+  box-shadow: $shadow;
 
   display: grid;
   grid-template-columns: 1fr 1fr 4fr;

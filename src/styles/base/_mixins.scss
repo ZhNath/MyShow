@@ -40,7 +40,8 @@
 
 // relative ---> position: relative
 // n
-@mixin position ($position, $left, $top, $right, $bottom) {
+@mixin position ($position, $left, $top,
+      $right, $bottom) {
       @if $position =='fixed' {
             position: fixed;
       }
