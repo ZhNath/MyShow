@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { App } from "./components/App.jsx";
 import Root from "./components/Root.jsx";
 import "./styles/index.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -15,7 +16,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root />}>
+        <Route path="/" element={<App />}>
           <Route index element={<Homepage />} />
           <Route path="filter/:id" element={<TVCard />} />
           <Route path="actor/:id" element={<ActorCard />} />

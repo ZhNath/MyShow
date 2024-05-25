@@ -7,7 +7,6 @@
 .filter-section input,
 .filter-section input::placeholder {
       height: 1.5rem;
-      color: $color_secondary;
 }
 
 .cta {
@@ -29,7 +28,8 @@
 .cta span {
       position: relative;
       letter-spacing: 0.05em;
-      @include font(1rem, $color_primary, 400);
+      font-size: 1rem;
+      font-weight: 400;
 
 }
 
