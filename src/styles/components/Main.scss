@@ -2,19 +2,19 @@
       // @include flex-row(1rem, center, start);
       display: grid;
       grid-template-columns: 1fr 3fr;
-      @include size (95vw, auto, $background-primary);
+      @include size (95vw, auto);
       margin: auto;
       margin-top: $margin_big;
 }
 
 .main_container {
-      @include size (100%, auto, $background-primary);
+      @include size (100%, auto);
       @include flex-row (1.5rem, end, center, wrap);
       padding-left: $margin_big;
 }
 
 .main_card {
-      @include size (9rem, 18rem, $background-primary);
+      @include size (9rem, 18rem);
       @include flex-col (1rem, start, center);
 
       text-align: center;

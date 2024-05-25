@@ -7,8 +7,21 @@
       border: 0;
       box-sizing: border-box;
       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-      color: $color_primary;
+      // color: $color_primary;
 }
+
+[data-theme="light"] {
+      background-color: $color_primary;
+      color: $background_primary;
+
+}
+
+[data-theme="dark"] {
+      color: $color_primary;
+      background-color: $background_primary;
+
+}
+
 
 a,
 a:active,
