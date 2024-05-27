@@ -8,25 +8,22 @@ export const EpisodeTracker = ({
 }) => {
   const handleLiOnChange = (seasonIndex, episodeIndex) => {
     const newState = { ...tvState };
-    newState[tv.id].seasons[seasonIndex].episodes[episodeIndex].watched =
-      !newState[tv.id].seasons[seasonIndex].episodes[episodeIndex].watched;
+    newState.seasons[seasonIndex].episodes[episodeIndex].watched =
+      !newState.seasons[seasonIndex].episodes[episodeIndex].watched;
     setTVState(newState);
-    saveTvStateToLocalStorage(newState);
+    saveTvStateToLocalStorage(id, newState);
   };
 
   const handleUlOnChange = (seasonIndex) => {
     const newState = { ...tvState };
-    newState[tv.id].seasons[seasonIndex].episodes.forEach((episode) => {
-      if (episode.isChecked) {
-        episode.isChecked = false;
-        episode.watched = false;
-      } else {
-        episode.isChecked = true;
-        episode.watched = true;
-      }
+    const isChecked = !newState.seasons[seasonIndex].isChecked;
+    newState.seasons[seasonIndex].isChecked = isChecked;
+    newState.seasons[seasonIndex].episodes.forEach((episode) => {
+      episode.isChecked = isChecked;
+      episode.watched = isChecked;
     });
     setTVState(newState);
-    saveTvStateToLocalStorage(newState);
+    saveTvStateToLocalStorage(id, newState);
   };
 
   return (
@@ -41,15 +38,15 @@ export const EpisodeTracker = ({
               name={`ul-${seasonIndex}`}
               id={`ul-${seasonIndex}`}
               onChange={() => handleUlOnChange(seasonIndex)}
+              checked={tvState?.seasons?.[seasonIndex]?.isChecked || false}
             />
 
             {Array.from({ length: season?.episodeCount }, (_, episodeIndex) => (
               <li
                 key={episodeIndex + 1}
                 className={
-                  tvState?.[tv?.id]?.seasons?.[seasonIndex]?.episodes?.[
-                    episodeIndex
-                  ]?.watched
+                  tvState?.seasons?.[seasonIndex]?.episodes?.[episodeIndex]
+                    ?.watched
                     ? "strikethrough"
                     : ""
                 }
@@ -62,9 +59,8 @@ export const EpisodeTracker = ({
                   name={`li-${seasonIndex}-${episodeIndex + 1}`}
                   id={`li-${seasonIndex}-${episodeIndex + 1}`}
                   checked={
-                    tvState?.[tv?.id]?.seasons?.[seasonIndex]?.episodes?.[
-                      episodeIndex
-                    ]?.watched
+                    tvState?.seasons?.[seasonIndex]?.episodes?.[episodeIndex]
+                      ?.watched || false
                   }
                   onChange={() => {
                     handleLiOnChange(seasonIndex, episodeIndex);

@@ -1,9 +1,12 @@
-export const getTvStateFromLocalStorage = () => {
-  const state = JSON.parse(localStorage.getItem("tvShowState")) || {};
+export const getTvStateFromLocalStorage = (id) => {
+  const state = JSON.parse(localStorage.getItem(`tvState-${id}`)) || {};
   return state;
 };
 
-export const saveTvStateToLocalStorage = (state) => {
-  localStorage.setItem("tvShowState", JSON.stringify(state));
-  // return null;
+export const saveTvStateToLocalStorage = (id, state) => {
+  localStorage.setItem(`tvState-${id}`, JSON.stringify(state));
+};
+
+export const deleteTvStateFromLocalStorage = (id) => {
+  localStorage.removeItem(`tvState-${id}`);
 };

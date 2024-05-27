@@ -2,14 +2,22 @@
 @import "../base/_mixins.scss";
 
 .header {
-  @include size(100vw, 4rem, $background_second);
+  @include size(100vw, 6rem, $background_second);
 
   display: grid;
   grid-template-columns: 2fr 1fr 7fr auto 1fr;
+  grid-template-rows: 1fr 1fr;
   align-items: center;
   column-gap: 2rem;
 
   position: relative;
+}
+
+.header .legacy {
+  grid-row: 1/1;
+  grid-column: 1/6;
+  justify-self: center;
+  font-style: oblique;
 }
 
 .header h1 {

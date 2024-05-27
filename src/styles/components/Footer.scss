@@ -1,3 +1,8 @@
 .footer {
       margin: $margin_big;
+      @include flex-row(0.5rem, start, start);
+}
+
+.footer div {
+      @include flex-col(0.5rem, center, start);
 }

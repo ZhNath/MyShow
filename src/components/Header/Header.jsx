@@ -11,6 +11,9 @@ export const Header = () => {
         <h1>My Show</h1>
       </Link>
       <BackButton />
+      <div className="legacy">
+        This product uses the TMDB API but is not endorsed or certified by TMDB.
+      </div>
       <Input_DropDown />
       <ColorSchemeToggler />
       <LogInButton />
