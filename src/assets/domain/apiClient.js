@@ -53,7 +53,7 @@ export const makeAccount = async (session_id) => {
 // Data fetching
 
 export const dataFetcher = async (type) => {
-  const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}&page=1`;
+  const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}`;
   const response = await fetch(_url);
   const data = await response.json();
   return data;
@@ -163,21 +163,34 @@ export const removeTVfromList = async (list_id, media_id) => {
   const data = await response.json();
   return data;
 };
-
-export const genresList = async () => {
-  const response = await fetch(
-    `${BASE_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`
-  );
-  const data = await response.json();
-  return data.genres;
+// *************************************
+export const getGenres = async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/genre/tv/list?api_key=${API_KEY}&language=en-US`
+    );
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch genres:", error);
+    return [];
+  }
 };
 
-export const languagesList = async () => {
-  const response = await fetch(
-    `${BASE_URL}/configuration/languages?api_key=${API_KEY}&language=en-US`
-  );
-  const data = await response.json();
-  return data;
+export const getLanguages = async () => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/configuration/languages?api_key=${API_KEY}&language=en-US`
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error("Failed to fetch languages:", err);
+    return [];
+  }
 };
 
 export const fetchFilterData = async (byParam) => {

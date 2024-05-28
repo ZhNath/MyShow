@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export const FilterButton = ({ name }) => {
+export const FilterButton = ({ name, id, onFilterListChange }) => {
   const [selected, setSelected] = useState(false);
 
   const handleOnClick = () => {
     setSelected(!selected);
   };
+
+  useEffect(() => {
+    onFilterListChange(id, selected);
+  }, [selected]);
 
   return (
     <button

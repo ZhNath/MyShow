@@ -16,7 +16,6 @@
 .main_card {
       @include size (9rem, 18rem);
       @include flex-col (1rem, start, center);
-
       text-align: center;
       box-shadow: $shadow
 }

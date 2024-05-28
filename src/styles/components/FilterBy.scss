@@ -1,4 +1,8 @@
 .filter-section {
+      @include flex-col(2rem, start, start)
+}
+
+.filter-buttons {
       @include flex-row(1rem, start, start, wrap);
       align-content: start;
       margin-bottom: 1rem;

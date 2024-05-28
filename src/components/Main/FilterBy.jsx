@@ -1,26 +1,12 @@
 import { useState, useEffect } from "react";
-import {
-  genresList,
-  languagesList,
-  fetchFilterData,
-} from "../../assets/domain/apiClient";
-import { FilterButton } from "../Neuro/FilterButton";
+import genres from "../../../public/genres.json";
+import languages from "../../../public/languages.json";
+import actors from "../../../public/actors.json";
+import { FilterButton } from "./FilterButton";
+import { fetchFilterData } from "../../assets/domain/apiClient";
+import { dataFetcher } from "../../assets/domain/apiClient";
 
-export const FilterBy = () => {
-  const [genres, setGenres] = useState([]);
-  const [languages, setLanguages] = useState([]);
-  const [resultList, setResultList] = useState([]);
-
-  useEffect(() => {
-    const fetchFilterLists = async () => {
-      const dataGenres = await genresList();
-      setGenres(dataGenres);
-      const dataLanguage = await languagesList();
-      setLanguages(dataLanguage);
-    };
-    fetchFilterLists();
-  }, []);
-
+export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
   function Select({ name, options }) {
     const handleFilterChange = async (event) => {
       const selected = event.target.value;
@@ -30,7 +16,7 @@ export const FilterBy = () => {
 
     return (
       <select name={name} onChange={handleFilterChange}>
-        <option value="">Select {name}</option>
+        <option value="">Select {name} </option>
         {options?.map((option) => (
           <option key={option?.iso_639_1} value={option?.iso_639_1}>
             {option?.english_name}
@@ -40,14 +26,53 @@ export const FilterBy = () => {
     );
   }
 
+  const handleLanguageSelectOnChange = (language) => {
+    return;
+  };
+  const handleActorSelectOnChange = (actor) => {
+    return;
+  };
+
+  const handleFilterListChange = (id, selected) => {
+    if (selected) {
+      setFilterList((prev) => [...prev, id]);
+    } else {
+      setFilterList((prev) => prev.filter((item) => item !== id));
+    }
+  };
+  const handleSubmitOnClick = () => {
+    onSubmit();
+  };
+
   return (
     <div className="filter-section">
-      <h3>TV Serial Filter</h3>
-      {genres?.map((genre) => (
-        <FilterButton key={genre?.id} name={genre?.name} />
-      ))}
+      <div className="filter-buttons">
+        {console.log(`FilterList`, filterList)}
+        <h3>TV Serial Filter</h3>
 
-      <Select name="language" options={languages} />
+        {genres.genres.map((genre) => (
+          <FilterButton
+            key={genre.id}
+            name={genre.name}
+            id={genre.id}
+            onFilterListChange={handleFilterListChange}
+          />
+        ))}
+      </div>
+
+      <Select
+        name="language"
+        options={languages}
+        onChange={handleLanguageSelectOnChange}
+      />
+      <Select
+        name="actors"
+        options={actors}
+        onChange={handleActorSelectOnChange}
+      />
+      <button type="submit" onClick={handleSubmitOnClick}>
+        apply Filter
+      </button>
     </div>
   );
 };
