@@ -1,111 +1,83 @@
 [
-  {
-    "id": "1111",
-    "name": "Pitt",
-    "fist_name": "Bred"
+  ======
+    "id": "1",
+    "english_name": "Leonardo DiCaprio"
   },
   {
-    "id": 1112,
-    "english_name": "Czech",
-    "name": "Český"
-  },
-
-  {
-    "iso_639_1": "tr",
-    "english_name": "Turkish",
-    "name": "Türkçe"
-  },
-
-  {
-    "iso_639_1": "et",
-    "english_name": "Estonian",
-    "name": "Eesti"
+    "id": "2",
+    "english_name": "Meryl Streep"
+>>>>>>> fea915ed4c1ec89e90c23c7058bd71bf7ddc3214
   },
   {
-    "iso_639_1": "fr",
-    "english_name": "French",
-    "name": "Français"
-  },
-
-  {
-    "iso_639_1": "sh",
-    "english_name": "Serbo-Croatian",
-    "name": ""
-  },
-
-  {
-    "iso_639_1": "ja",
-    "english_name": "Japanese",
-    "name": "日本語"
-  },
-
-  {
-    "iso_639_1": "kk",
-    "english_name": "Kazakh",
-    "name": "қазақ"
-  },
-
-  {
-    "iso_639_1": "pt",
-    "english_name": "Portuguese",
-    "name": "Português"
-  },
-
-  {
-    "iso_639_1": "sk",
-    "english_name": "Slovak",
-    "name": "Slovenčina"
+    "id": "3",
+    "english_name": "Denzel Washington"
   },
   {
-    "iso_639_1": "sr",
-    "english_name": "Serbian",
-    "name": "Srpski"
-  },
-
-  {
-    "iso_639_1": "ar",
-    "english_name": "Arabic",
-    "name": "العربية"
-  },
-
-  {
-    "iso_639_1": "it",
-    "english_name": "Italian",
-    "name": "Italiano"
+    "id": "4",
+    "english_name": "Scarlett Johansson"
   },
   {
-    "iso_639_1": "nl",
-    "english_name": "Dutch",
-    "name": "Nederlands"
+    "id": "5",
+    "english_name": "Tom Hanks"
   },
-
   {
-    "iso_639_1": "hu",
-    "english_name": "Hungarian",
-    "name": "Magyar"
+    "id": "6",
+    "english_name": "Natalie Portman"
   },
-
   {
-    "iso_639_1": "xx",
-    "english_name": "No Language",
-    "name": "No Language"
+    "id": "7",
+    "english_name": "Morgan Freeman"
   },
-
   {
-    "iso_639_1": "pl",
-    "english_name": "Polish",
-    "name": "Polski"
+    "id": "8",
+    "english_name": "Kate Winslet"
   },
-
   {
-    "iso_639_1": "en",
-    "english_name": "English",
-    "name": "English"
+    "id": "9",
+    "english_name": "Robert De Niro"
   },
-
   {
-    "iso_639_1": "uk",
-    "english_name": "Ukrainian",
-    "name": "Український"
+    "id": "10",
+    "english_name": "Angelina Jolie"
+  },
+  {
+    "id": "11",
+    "english_name": "Brad Pitt"
+  },
+  {
+    "id": "12",
+    "english_name": "Julia Roberts"
+  },
+  {
+    "id": "13",
+    "english_name": "Johnny Depp"
+  },
+  {
+    "id": "14",
+    "english_name": "Charlize Theron"
+  },
+  {
+    "id": "15",
+    "english_name": "Will Smith"
+  },
+  {
+    "id": "16",
+    "english_name": "Emma Stone"
+  },
+  {
+    "id": "17",
+    "english_name": "Joaquin Phoenix"
+  },
+  {
+    "id": "18",
+    "english_name": "Sandra Bullock"
+  },
+  {
+    "id": "19",
+    "english_name": "Christian Bale"
+  },
+  {
+    "id": "20",
+    "english_name": "Anne Hathaway"
   }
 ]

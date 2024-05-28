@@ -70,9 +70,11 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
         options={actors}
         onChange={handleActorSelectOnChange}
       />
+      <div className="submit">
       <button type="submit" onClick={handleSubmitOnClick}>
-        apply Filter
+        Filter
       </button>
+      </div>
     </div>
   );
 };
