@@ -1,13 +1,13 @@
 [
-  ======
+  {
     "id": "1",
     "english_name": "Leonardo DiCaprio"
   },
   {
     "id": "2",
     "english_name": "Meryl Streep"
->>>>>>> fea915ed4c1ec89e90c23c7058bd71bf7ddc3214
   },
+
   {
     "id": "3",
     "english_name": "Denzel Washington"
