@@ -13,13 +13,16 @@
 [data-theme="light"] {
       background-color: $color_primary;
       color: $background_primary;
+      --background_circle: var(--filterCircleColorLight);
+
+
 
 }
 
 [data-theme="dark"] {
-      color: $color_primary;
       background-color: $background_primary;
-
+      color: $color_primary;
+      --background_circle: var(--filterCircleColorDark);
 }
 
 

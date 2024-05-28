@@ -17,8 +17,8 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
     return (
       <select name={name} onChange={handleFilterChange}>
         <option value="">Select {name} </option>
-        {options?.map((option) => (
-          <option key={option?.iso_639_1} value={option?.iso_639_1}>
+        {options?.map((option, i) => (
+          <option key={i} value={option?.iso_639_1}>
             {option?.english_name}
           </option>
         ))}

@@ -10,16 +10,19 @@ export const Main = () => {
   const [allData, setAllData] = useState([]);
 
   useEffect(() => {
+    const allResults = [];
     const fetchPopular = async () => {
       try {
-        const requests = Array.from({ length: 10 }, (_, i) =>
-          dataFetcher(`tv/popular?page=${i + 1}&`)
-        );
-        const responses = await Promise.all(requests);
-        const allResults = responses.flatMap((response) => response.results);
+        for (let i = 1; i <= 20; i++) {
+          const data = await dataFetcher(`tv/popular?page=${i}&`);
+          allResults.push(...data.results);
+        }
+        const uniqueResults = Array.from(
+          new Set(allResults.map((a) => a.id))
+        ).map((id) => allResults.find((a) => a.id === id));
 
-        setAllData(allResults);
-        setGallery(allResults);
+        setGallery(uniqueResults);
+        setAllData(uniqueResults);
       } catch (error) {
         console.error("Failed to fetch popular TV shows:", error);
       }
@@ -30,17 +33,19 @@ export const Main = () => {
 
   const handleSubmitOnClick = () => {
     if (filterList.length > 0) {
-      const filteredData = allData.filter((tv) =>
-        tv.genre_ids.some(
-          (genreId) =>
-            filterList.includes(genreId) &&
-            filterList.every((item) => tv.genre_ids.includes(item))
-        )
+      const filteredData = allData.filter(
+        (tv) =>
+          tv.genre_ids.some((genreId) => filterList.includes(genreId)) &&
+          filterList.every((item) => tv.genre_ids.includes(item))
       );
+
       setGallery(filteredData);
     } else {
       setGallery(allData);
     }
+
+    //  actors filter
+    // languages filter
   };
 
   return (

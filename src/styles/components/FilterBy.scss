@@ -24,7 +24,10 @@
       @include position(absolute, 0, 0, 0, 0);
       display: block;
       border-radius: 5rem;
-      @include size(2rem, 2rem, $background_second);
+      width: 2rem;
+      height: 2rem;
+      background-color: var(--background_circle);
+      // @include size(2rem, 2rem, $background_second);
       transition: all 0.3s ease;
 
 }
