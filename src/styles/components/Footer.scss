@@ -1,8 +1,14 @@
 .footer {
       margin: $margin_big;
-      @include flex-row(0.5rem, start, start);
+      @include flex-row(0.5rem, space-between, start);
+      $background_second: rgb(62, 62, 181);
 }
 
-.footer div {
-      @include flex-col(0.5rem, center, start);
+.footer-basic {
+      @include flex-col(0.5rem, center, center);
 }
+
+.footer-basic a {
+      display: block;
+       
+ }

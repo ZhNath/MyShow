@@ -1,11 +1,32 @@
 .filter-section {
-      @include flex-col(2rem, start, start)
+      @include flex-col(3rem, start, start)
 }
 
 .filter-buttons {
       @include flex-row(1rem, start, start, wrap);
       align-content: start;
-      margin-bottom: 1rem;
+      margin-bottom: 3rem;
+}
+.filter-section select {
+      height: 2.0rem;
+      border-radius: 0.2rem;
+      margin: 0 5px 10px ;
+}
+
+.submit {
+      $background_primary: #242424;
+      $color_primary: rgba(255, 255, 255, 0.87);
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 0.25rem;
+
+  &:hover {
+    background-color: #f0f0f0;
+    color: #242424;
+  }
+
 }
 
 .filter-section input,

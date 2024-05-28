@@ -8,6 +8,8 @@ export const Main = () => {
   const [gallery, setGallery] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [allData, setAllData] = useState([]);
+  const [languageFilterList, setLanguageFilterList] = useState([]);
+  const [actorFilterList, setActorFilterList] = useState([]);
 
   useEffect(() => {
     const fetchPopular = async () => {
@@ -20,27 +22,44 @@ export const Main = () => {
 
         setAllData(allResults);
         setGallery(allResults);
+
       } catch (error) {
         console.error("Failed to fetch popular TV shows:", error);
       }
     };
 
     fetchPopular();
-  }, []);
+  }, []); 
 
   const handleSubmitOnClick = () => {
-    if (filterList.length > 0) {
-      const filteredData = allData.filter((tv) =>
-        tv.genre_ids.some(
-          (genreId) =>
-            filterList.includes(genreId) &&
-            filterList.every((item) => tv.genre_ids.includes(item))
-        )
-      );
+
+    const genreFilterActive = filterList.length > 0;
+    const languageFilterActive = languageFilterList.length > 0;
+    const actorFilterActive = actorFilterList.length > 0;
+
+    // if (filterList.length > 0) {
+    //   const filteredData = allData.filter((tv) =>
+    //     tv.genre_ids.some(
+    //       (genreId) =>
+    //         filterList.includes(genreId) &&
+    //         filterList.every((item) => tv.genre_ids.includes(item))
+       
+        
+    if (genreFilterActive || languageFilterActive || actorFilterActive) {
+      const filteredData = allData.filter((tv) => {
+        const genreMatch = !genreFilterActive || filterList.every((genreId) => tv.genre_ids.includes(genreId));
+        const languageMatch = !languageFilterActive || languageFilterList.includes(tv.original_language);
+        const actorMatch = !actorFilterActive || actorFilterList.every((actor) => tv.actors && tv.actors.includes(actor));
+
+        return genreMatch && languageMatch && actorMatch;
+      });
+          
+  
       setGallery(filteredData);
     } else {
       setGallery(allData);
     }
+
   };
 
   return (
@@ -48,6 +67,8 @@ export const Main = () => {
       <FilterBy
         filterList={filterList}
         setFilterList={setFilterList}
+        setLanguageFilterList={setLanguageFilterList}
+        setActorFilterList={setActorFilterList}
         onSubmit={handleSubmitOnClick}
       />
       <div className="main_container">
