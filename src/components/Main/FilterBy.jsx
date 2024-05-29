@@ -3,22 +3,21 @@ import genres from "../../../public/genres.json";
 import languages from "../../../public/languages.json";
 import actors from "../../../public/actors.json";
 import { FilterButton } from "./FilterButton";
-import { fetchFilterData } from "../../assets/domain/apiClient";
-import { dataFetcher } from "../../assets/domain/apiClient";
 
-export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
-  function Select({ name, options }) {
-    const handleFilterChange = async (event) => {
-      const selected = event.target.value;
-      const data = await fetchFilterData(`with_original_language=${selected}`);
-      setResultList(data);
-    };
-
+export const FilterBy = ({
+  setFilterList,
+  onSubmit,
+  setActorFilterList,
+  setLanguageFilterList,
+  languageFilterList,
+  actorFilterList,
+}) => {
+  function Select({ name, options, valuefield, keyfield, onChange }) {
     return (
-      <select name={name} onChange={handleFilterChange}>
+      <select name={name} onChange={onChange}>
         <option value="">Select {name} </option>
-        {options?.map((option, i) => (
-          <option key={i} value={option?.iso_639_1}>
+        {options?.map((option) => (
+          <option key={option[keyfield]} value={option[valuefield]}>
             {option?.english_name}
           </option>
         ))}
@@ -26,11 +25,12 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
     );
   }
 
-  const handleLanguageSelectOnChange = (language) => {
-    return;
+  const handleLanguageSelectOnChange = (event) => {
+    setLanguageFilterList(event.target.value);
   };
-  const handleActorSelectOnChange = (actor) => {
-    return;
+
+  const handleActorSelectOnChange = (event) => {
+    setActorFilterList(event.target.value);
   };
 
   const handleFilterListChange = (id, selected) => {
@@ -47,7 +47,6 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
   return (
     <div className="filter-section">
       <div className="filter-buttons">
-        {console.log(`FilterList`, filterList)}
         <h3>TV Serial Filter</h3>
 
         {genres.genres.map((genre) => (
@@ -63,17 +62,22 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
       <Select
         name="language"
         options={languages}
+        keyfield="iso_639_1"
+        valuefield="iso_639_1"
         onChange={handleLanguageSelectOnChange}
       />
       <Select
-        name="actors"
+        name="actor"
         options={actors}
+        valuefield="id"
+        keyfield="id"
         onChange={handleActorSelectOnChange}
       />
+
       <div className="submit">
-      <button type="submit" onClick={handleSubmitOnClick}>
-        Filter
-      </button>
+        <button type="submit" onClick={handleSubmitOnClick}>
+          Filter
+        </button>
       </div>
     </div>
   );

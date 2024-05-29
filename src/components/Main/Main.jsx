@@ -50,15 +50,14 @@ export const Main = () => {
         const genreMatch =
           !genreFilterActive ||
           filterList.every((genreId) => tv.genre_ids.includes(genreId));
+
         const languageMatch =
           !languageFilterActive ||
           languageFilterList.includes(tv.original_language);
-        const actorMatch =
-          !actorFilterActive ||
-          actorFilterList.every(
-            (actor) => tv.actors && tv.actors.includes(actor)
-          );
 
+        console.log(actorFilterList);
+        const actorMatch =
+          !actorFilterActive || tv.actors.includes(actorFilterList);
         return genreMatch && languageMatch && actorMatch;
       });
 
