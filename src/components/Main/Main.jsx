@@ -37,13 +37,6 @@ export const Main = () => {
     const languageFilterActive = languageFilterList.length > 0;
     const actorFilterActive = actorFilterList.length > 0;
 
-    // if (filterList.length > 0) {
-    //   const filteredData = allData.filter((tv) =>
-    //     tv.genre_ids.some(
-    //       (genreId) =>
-    //         filterList.includes(genreId) &&
-    //         filterList.every((item) => tv.genre_ids.includes(item))
-       
         
     if (genreFilterActive || languageFilterActive || actorFilterActive) {
       const filteredData = allData.filter((tv) => {

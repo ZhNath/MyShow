@@ -59,17 +59,19 @@ export const FilterBy = ({ filterList, setFilterList, onSubmit }) => {
           />
         ))}
       </div>
-
+        <div className="filter-group">
       <Select
         name="language"
         options={languages}
         onChange={handleLanguageSelectOnChange}
       />
+    
       <Select
         name="actors"
         options={actors}
         onChange={handleActorSelectOnChange}
       />
+      </div>
       <div className="submit">
       <button type="submit" onClick={handleSubmitOnClick}>
         Filter
