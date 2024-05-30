@@ -12,47 +12,59 @@ export const Main = () => {
   const [actorFilterList, setActorFilterList] = useState([]);
 
   useEffect(() => {
+    const allResults = [];
     const fetchPopular = async () => {
       try {
-        const requests = Array.from({ length: 10 }, (_, i) =>
-          dataFetcher(`tv/popular?page=${i + 1}&`)
-        );
-        const responses = await Promise.all(requests);
-        const allResults = responses.flatMap((response) => response.results);
+        for (let i = 1; i <= 20; i++) {
+          const data = await dataFetcher(`tv/popular?page=${i}&`);
+          allResults.push(...data.results);
+        }
+        const uniqueResults = Array.from(
+          new Set(allResults.map((a) => a.id))
+        ).map((id) => allResults.find((a) => a.id === id));
 
-        setAllData(allResults);
-        setGallery(allResults);
-
+        setGallery(uniqueResults);
+        setAllData(uniqueResults);
       } catch (error) {
         console.error("Failed to fetch popular TV shows:", error);
       }
     };
 
     fetchPopular();
-  }, []); 
+  }, []);
 
   const handleSubmitOnClick = () => {
-
     const genreFilterActive = filterList.length > 0;
     const languageFilterActive = languageFilterList.length > 0;
     const actorFilterActive = actorFilterList.length > 0;
 
-        
+    // if (filterList.length > 0) {
+    //   const filteredData = allData.filter((tv) =>
+    //     tv.genre_ids.some(
+    //       (genreId) =>
+    //         filterList.includes(genreId) &&
+    //         filterList.every((item) => tv.genre_ids.includes(item))
+
     if (genreFilterActive || languageFilterActive || actorFilterActive) {
       const filteredData = allData.filter((tv) => {
-        const genreMatch = !genreFilterActive || filterList.every((genreId) => tv.genre_ids.includes(genreId));
-        const languageMatch = !languageFilterActive || languageFilterList.includes(tv.original_language);
-        const actorMatch = !actorFilterActive || actorFilterList.every((actor) => tv.actors && tv.actors.includes(actor));
+        const genreMatch =
+          !genreFilterActive ||
+          filterList.every((genreId) => tv.genre_ids.includes(genreId));
 
+        const languageMatch =
+          !languageFilterActive ||
+          languageFilterList.includes(tv.original_language);
+
+        console.log(actorFilterList);
+        const actorMatch =
+          !actorFilterActive || tv.actors.includes(actorFilterList);
         return genreMatch && languageMatch && actorMatch;
       });
-          
-  
+
       setGallery(filteredData);
     } else {
       setGallery(allData);
     }
-
   };
 
   return (
