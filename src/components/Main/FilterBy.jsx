@@ -58,7 +58,7 @@ export const FilterBy = ({
           />
         ))}
       </div>
-
+        <div className="filter-group">
       <Select
         name="language"
         options={languages}
@@ -66,6 +66,7 @@ export const FilterBy = ({
         valuefield="iso_639_1"
         onChange={handleLanguageSelectOnChange}
       />
+    
       <Select
         name="actor"
         options={actors}

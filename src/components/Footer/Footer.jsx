@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 
+
+
 const Footer = () => {
 
   return (
     <footer className="footer">
- 
-    <p>© 2024 TMDB. All rights reserved.</p>
-
+   
+    <div className="logo-bild">
+        <img src="src/components/Footer/logotmdb.png" alt="Logo" className="logo"></img>
+         <p>© 2024 TMDB. All rights reserved.</p>
+    </div>
     <div className="footer-basic">THE BASIC
     <ul>
     <li>
@@ -31,11 +35,13 @@ const Footer = () => {
       </li>
       </ul>
     </div>
+   
 
     <Link to="/">
       <h1>My Show</h1>
     </Link>
     </footer>
+    
   );
 };
 export default Footer;
