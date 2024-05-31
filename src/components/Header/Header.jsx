@@ -7,16 +7,19 @@ import { Link } from "react-router-dom";
 export const Header = () => {
   return (
     <div className="header">
-      <Link to="/">
-        <h1>My Show</h1>
-      </Link>
-      <BackButton />
       <div className="legacy">
         This product uses the TMDB API but is not endorsed or certified by TMDB.
       </div>
-      <Input_DropDown />
-      <ColorSchemeToggler />
-      <LogInButton />
+      <div className="headerBottom">
+        <Link to="/">
+          <h1>My Show</h1>
+        </Link>
+        <BackButton />
+
+        <Input_DropDown />
+        <ColorSchemeToggler />
+        <LogInButton />
+      </div>
     </div>
   );
 };

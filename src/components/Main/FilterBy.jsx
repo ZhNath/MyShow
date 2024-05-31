@@ -1,12 +1,14 @@
 import genres from "../../../public/genres.json";
 import languages from "../../../public/languages.json";
 import { FilterButton } from "./FilterButton";
-import { useState } from "react";
+import { useEffect } from "react";
 
 export const FilterBy = ({
   setFilterList,
   onSubmit,
   setLanguageFilterList,
+  ratingValue,
+  setRatingValue,
 }) => {
   function Select({ name, options, onChange }) {
     return (
@@ -32,15 +34,18 @@ export const FilterBy = ({
       setFilterList((prev) => prev.filter((item) => item !== id));
     }
   };
+
   const handleSubmitOnClick = () => {
     onSubmit();
   };
 
-  const [value, setValue] = useState(0);
+  const handleTrackRatingChange = (event) => {
+    setRatingValue(event.target.value);
+  };
 
   return (
     <div className="filter-section">
-      <h3>TV Serial Filter</h3>
+      <p>TV SERIAL FILTER</p>
       <div className="filter-buttons">
         {genres.genres.map((genre) => (
           <FilterButton
@@ -64,14 +69,13 @@ export const FilterBy = ({
           min="0"
           max="10"
           step="0.1"
-          value={value}
+          value={ratingValue}
           className="ratingSlider"
-          onChange={(event) => setValue(event.target.value)}
+          onChange={handleTrackRatingChange}
         />{" "}
         <div>
-          {" "}
           <p>
-            min rating:&nbsp;&nbsp;&nbsp;<span>{value}</span>
+            min rating:&nbsp;&nbsp;&nbsp;<span>{ratingValue}</span>
           </p>
         </div>
       </div>

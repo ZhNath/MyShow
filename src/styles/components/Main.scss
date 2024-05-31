@@ -18,9 +18,28 @@
       @include size (9rem, 18rem);
       @include flex-col (1rem, start, center);
       text-align: center;
-      box-shadow: $shadow
+      box-shadow: $shadow;
+      position: relative;
+
+}
+
+
+
+.main_card .image {
+      @include size(100%, 80%);
+      background-size: cover;
+      background-repeat: no-repeat;
 }
 
 .main_card img {
-      @include size (100%, auto, cover);
+      @include size(100%, 100%);
+}
+
+.main_card .vote {
+      @include size(2rem, 2rem);
+      @include font(1rem, $color_primary, normal);
+      @include flex(0, center, center, none);
+      background-color: $color_green;
+      border-radius: 50%;
+      @include position (absolute, n, 0.5rem, 0.5rem, n);
 }

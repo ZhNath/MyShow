@@ -1,12 +1,18 @@
 .filter-section {
-      @include flex-col(3rem, start, start);
+      @include flex-col(4rem, start, start);
       margin-top: 1rem;
+}
+
+.filter-section p {
+      @include font(1.5rem, $color_green, normal);
+      letter-spacing: 2PX;
+      align-self: center;
+
 }
 
 .filter-buttons {
       @include flex-row(1rem, start, start, wrap);
-      align-content: start;
-      margin-bottom: 3rem;
+      // margin-bottom: 3rem;
 }
 
 .cta {
@@ -65,39 +71,13 @@
 
 
 
-// input[type='range'] {
-//       overflow: hidden;
-//       -webkit-appearance: none;
-//       @include size(20rem, 0.5rem, $color_primary);
-//       margin: 0;
-//       padding: 0;
-// }
 
-
-
-// input[type='range']::-webkit-slider-thumb {
-//       -webkit-appearance: none;
-//       @include size(1rem, 1rem, $color_orange);
-//       border-radius: 50%;
-//       cursor: ew-resize;
-//       border: 10rem solid $color_green;
-//       // box-shadow: -10rem 0 0 10rem $color_green;
-//       position: relative;
-// }
-
-// input[type='range']::-webkit-slider-thumb::after {
-//       content: "";
-//       position: absolute;
-//       right: 1rem;
-//       @include size(1.5rem, 1.5rem, $color_orange);
-//       border-radius: 50%;
-// }
 
 .rangeWrapper {
       @include flex-col(1rem, start, start);
       width: 100%;
       border-radius: 6px;
-      justify-self: start;
+      justify-self: center;
 
 }
 

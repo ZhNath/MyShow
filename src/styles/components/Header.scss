@@ -2,34 +2,28 @@
 @import "../base/_mixins.scss";
 
 .header {
-  @include size(100vw, 7rem, $background_second);
-
-  display: grid;
-  grid-template-columns: 2fr 1fr 7fr auto 1fr 1rem;
-  grid-template-rows: 1fr 1fr;
-  align-items: center;
-  column-gap: 2rem;
-
-  position: relative;
+  @include size(100vw, 7rem);
 }
 
 .header .legacy {
-  grid-row: 1/1;
-  grid-column: 1/7;
+  @include size(100%, 3rem);
   padding-top: 1rem;
-
-
-  @include size(100%, 100%, $background_primary);
   text-align: center;
   font-style: oblique;
-  color: $color_orange;
-
-
+  color: $color_green;
 }
 
 
 
+.headerBottom {
+  background-color: var(--headerBackground);
 
+  display: grid;
+  grid-template-columns: 2fr 1fr 7fr auto 1fr 1rem;
+  align-items: center;
+  column-gap: 2rem;
+  position: relative;
+}
 
 .header h1 {
   @include font(1.5rem, $color_primary, bold);

@@ -16,6 +16,7 @@
       color: $background_primary;
       --background_circle: var(--filterCircleColorLight);
       --background_circle_hover: var(--filterCircleColorLightHover);
+      --headerBackground: var(--filterCircleColorLight);
 
 
 
@@ -26,6 +27,7 @@
       color: $color_primary;
       --background_circle: var(--filterCircleColorDark);
       --background_circle_hover: var(--filterCircleColorDarkHover);
+      --headerBackground: var(--filterCircleColorDark);
 }
 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const FilterButton = ({ name, id, onFilterListChange }) => {
+export const FilterButton = ({ name, id, onFilterListChange, style }) => {
   const [selected, setSelected] = useState(false);
 
   const handleOnClick = () => {
@@ -15,6 +15,7 @@ export const FilterButton = ({ name, id, onFilterListChange }) => {
     <button
       className={selected ? "cta selected" : "cta"}
       onClick={handleOnClick}
+      style={style}
     >
       <span>{name}</span>
     </button>

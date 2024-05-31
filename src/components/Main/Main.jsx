@@ -9,7 +9,7 @@ export const Main = () => {
   const [filterList, setFilterList] = useState([]);
   const [allData, setAllData] = useState([]);
   const [languageFilterList, setLanguageFilterList] = useState([]);
-  const [actorFilterList, setActorFilterList] = useState([]);
+  const [ratingValue, setRatingValue] = useState(0);
 
   useEffect(() => {
     const allResults = [];
@@ -36,16 +36,9 @@ export const Main = () => {
   const handleSubmitOnClick = () => {
     const genreFilterActive = filterList.length > 0;
     const languageFilterActive = languageFilterList.length > 0;
-    const actorFilterActive = actorFilterList.length > 0;
+    const ratingFilterActive = ratingValue > 0;
 
-    // if (filterList.length > 0) {
-    //   const filteredData = allData.filter((tv) =>
-    //     tv.genre_ids.some(
-    //       (genreId) =>
-    //         filterList.includes(genreId) &&
-    //         filterList.every((item) => tv.genre_ids.includes(item))
-
-    if (genreFilterActive || languageFilterActive || actorFilterActive) {
+    if (genreFilterActive || languageFilterActive || ratingFilterActive) {
       const filteredData = allData.filter((tv) => {
         const genreMatch =
           !genreFilterActive ||
@@ -55,10 +48,8 @@ export const Main = () => {
           !languageFilterActive ||
           languageFilterList.includes(tv.original_language);
 
-        console.log(actorFilterList);
-        const actorMatch =
-          !actorFilterActive || tv.actors.includes(actorFilterList);
-        return genreMatch && languageMatch && actorMatch;
+        const ratingMatch = !ratingValue || tv.vote_average >= ratingValue;
+        return genreMatch && languageMatch && ratingMatch;
       });
 
       setGallery(filteredData);
@@ -69,17 +60,22 @@ export const Main = () => {
 
   return (
     <div className="main">
+      {console.log("gallery", gallery)}
       <FilterBy
         filterList={filterList}
         setFilterList={setFilterList}
         setLanguageFilterList={setLanguageFilterList}
-        setActorFilterList={setActorFilterList}
+        setRatingValue={setRatingValue}
+        ratingValue={ratingValue}
         onSubmit={handleSubmitOnClick}
       />
       <div className="main_container">
         {gallery?.map((tv) => (
           <Link to={`/filter/${tv.id}`} key={tv.id} className="main_card">
-            <img src={`${IMG_URL}${tv.poster_path}`} alt={tv.name} />
+            <div className="image">
+              <img src={`${IMG_URL}${tv.poster_path}`} alt={tv.name} />
+              <div className="vote">{tv.vote_average.toFixed(1)}</div>
+            </div>
             <h4>{tv.name}</h4>
           </Link>
         ))}

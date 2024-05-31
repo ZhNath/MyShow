@@ -15,14 +15,12 @@ $shadow: 6px 6px 12px #030517,
       -6px -6px 12px #8d98da33;
 $margin_big: 2rem;
 
-// $filterCircleColorDark: rgb(62, 62, 181);
-// $filterCircleColorLight: rgb(248, 157, 0);
+$randomNumber: random(2);
 
 :root {
       --filterCircleColorDark: rgb(62, 62, 181);
       --filterCircleColorLight: rgb(248, 157, 0);
       --filterCircleColorDarkHover: rgb(189, 189, 247);
       --filterCircleColorLightHover: rgb(248, 190, 124);
-      // --colorPrimary: rgba(255, 255, 255, 0.87);
-      // --backgroundPrimary: #242424;
+
 }
