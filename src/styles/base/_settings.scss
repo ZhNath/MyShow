@@ -5,6 +5,7 @@
       margin: 0;
       padding: 0;
       border: 0;
+
       box-sizing: border-box;
       font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
       // color: $color_primary;
@@ -14,6 +15,7 @@
       background-color: $color_primary;
       color: $background_primary;
       --background_circle: var(--filterCircleColorLight);
+      --background_circle_hover: var(--filterCircleColorLightHover);
 
 
 
@@ -23,6 +25,7 @@
       background-color: $background_primary;
       color: $color_primary;
       --background_circle: var(--filterCircleColorDark);
+      --background_circle_hover: var(--filterCircleColorDarkHover);
 }
 
 
@@ -34,7 +37,8 @@ textarea,
 textarea::placeholder,
 input,
 input::placeholder,
-button {
+button,
+select {
       text-decoration: none;
       color: inherit;
       font: inherit;
@@ -44,6 +48,7 @@ textarea,
 input,
 input:active,
 input:focus,
+select,
 select:active,
 select:focus,
 button {

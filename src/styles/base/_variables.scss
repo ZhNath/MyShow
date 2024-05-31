@@ -1,11 +1,13 @@
 $background_primary: #242424;
 $background_second: rgb(62, 62, 181);
+$background_second_transparent: rgba(62, 62, 181, 0.45);
 $background_third: rgb(189, 189, 247);
 $background_hover: rgb(206, 206, 248);
 
 $color_primary: rgba(255, 255, 255, 0.87);
 $color_secondary: rgb(20, 20, 60);
 $color_green: rgb(54, 188, 54);
+$color_green_light: rgb(54, 188, 54, 0.5);
 $color_gray: rgb(88, 90, 97);
 $color_orange: rgb(255, 136, 0);
 
@@ -19,6 +21,8 @@ $margin_big: 2rem;
 :root {
       --filterCircleColorDark: rgb(62, 62, 181);
       --filterCircleColorLight: rgb(248, 157, 0);
+      --filterCircleColorDarkHover: rgb(189, 189, 247);
+      --filterCircleColorLightHover: rgb(248, 190, 124);
       // --colorPrimary: rgba(255, 255, 255, 0.87);
       // --backgroundPrimary: #242424;
 }

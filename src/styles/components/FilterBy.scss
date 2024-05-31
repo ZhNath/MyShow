@@ -1,44 +1,12 @@
 .filter-section {
-      @include flex-col(3rem, start, start)
+      @include flex-col(3rem, start, start);
+      margin-top: 1rem;
 }
 
 .filter-buttons {
       @include flex-row(1rem, start, start, wrap);
       align-content: start;
       margin-bottom: 3rem;
-}
-.filter-section select {
-      width: 100%;
-      height: 2.5rem;
-      border-radius: 2rem;
-      margin: 0 5px 10px ;
-      background-color: rgb(62, 62, 181);
-      color: #d3cbcb;
-}
-
-.filter-group {
-      @include flex-row(1rem, start, start, wrap);
-      align-content: start;
-      margin-bottom: 1rem;
-}
-.submit {
-      @include flex-row(1rem, start, start, wrap);
-      align-content: start;
-      margin-bottom: 3rem;
-      border-radius: 1.5rem;
-      background-color: rgb(62, 62, 181);
-
-       &:hover {
-      $background_primary: #242424;
-      $color_primary: rgba(255, 255, 255, 0.87);
-  }
-
-
-}
-
-.filter-section input,
-.filter-section input::placeholder {
-      height: 2.5rem;
 }
 
 .cta {
@@ -52,10 +20,7 @@
       @include position(absolute, 0, 0, 0, 0);
       display: block;
       border-radius: 5rem;
-      width: 2rem;
-      height: 2rem;
-      background-color: var(--background_circle);
-      // @include size(2rem, 2rem, $background_second);
+      @include size(2rem, 2rem, var(--background_circle));
       transition: all 0.3s ease;
 
 }
@@ -72,10 +37,113 @@
 .cta.selected:before {
       width: 100%;
       position: absolute;
-      background: $background_third;
-
+      background: var(--background_circle_hover)
 }
 
 .cta:active {
       transform: scale(0.95);
+}
+
+.filter-section select {
+      @include size(70%, 2.5rem, var(--background_circle));
+      border-radius: 2rem;
+      padding-right: 1rem;
+      // margin: 0 5px 10px;
+}
+
+.filter-section select:hover {
+
+      @include size(70%, 2.5rem, var(--background_circle_hover));
+
+}
+
+.filter-group {
+      @include flex-row(1rem, start, start, wrap);
+      align-content: start;
+      margin-bottom: 1rem;
+}
+
+
+
+// input[type='range'] {
+//       overflow: hidden;
+//       -webkit-appearance: none;
+//       @include size(20rem, 0.5rem, $color_primary);
+//       margin: 0;
+//       padding: 0;
+// }
+
+
+
+// input[type='range']::-webkit-slider-thumb {
+//       -webkit-appearance: none;
+//       @include size(1rem, 1rem, $color_orange);
+//       border-radius: 50%;
+//       cursor: ew-resize;
+//       border: 10rem solid $color_green;
+//       // box-shadow: -10rem 0 0 10rem $color_green;
+//       position: relative;
+// }
+
+// input[type='range']::-webkit-slider-thumb::after {
+//       content: "";
+//       position: absolute;
+//       right: 1rem;
+//       @include size(1.5rem, 1.5rem, $color_orange);
+//       border-radius: 50%;
+// }
+
+.rangeWrapper {
+      @include flex-col(1rem, start, start);
+      width: 100%;
+      border-radius: 6px;
+      justify-self: start;
+
+}
+
+input[type='range'] {
+      -webkit-appearance: none;
+      @include size(100%, 0.5rem, $color_primary);
+      margin: 0;
+      padding: 0;
+      background: $color_primary;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+}
+
+
+input[type='range']::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      @include size(1rem, 1rem, $color_green);
+      border-radius: 50%;
+      cursor: ew-resize;
+      position: relative;
+      transition: 0.3s ease-in-out;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+      box-shadow: 0px 0px 0px 8px $color_green_light;
+      transition: 0.3s ease-in-out;
+}
+
+.rangeWrapper span {
+      @include font(1.5rem, $color_green, bold);
+      letter-spacing: 0.05em;
+}
+
+
+.submit {
+      @include flex-row();
+      @include size(70%, 3rem, var(--background_circle));
+      margin-bottom: 3rem;
+      border-radius: 1.5rem;
+      padding-right: 0.5rem;
+      letter-spacing: 3px;
+}
+
+.submit:hover,
+.submit:active {
+
+      background-color: var(--background_circle_hover);
 }

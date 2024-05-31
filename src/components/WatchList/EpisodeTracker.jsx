@@ -11,7 +11,7 @@ export const EpisodeTracker = ({
     newState.seasons[seasonIndex].episodes[episodeIndex].watched =
       !newState.seasons[seasonIndex].episodes[episodeIndex].watched;
     setTVState(newState);
-    saveTvStateToLocalStorage(id, newState);
+    saveTvStateToLocalStorage("id", newState);
   };
 
   const handleUlOnChange = (seasonIndex) => {
@@ -23,7 +23,7 @@ export const EpisodeTracker = ({
       episode.watched = isChecked;
     });
     setTVState(newState);
-    saveTvStateToLocalStorage(id, newState);
+    saveTvStateToLocalStorage("id", newState);
   };
 
   return (

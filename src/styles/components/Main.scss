@@ -2,6 +2,7 @@
       // @include flex-row(1rem, center, start);
       display: grid;
       grid-template-columns: 1fr 3fr;
+      column-gap: 4rem;
       @include size (95vw, auto);
       margin: auto;
       margin-top: $margin_big;
@@ -9,7 +10,7 @@
 
 .main_container {
       @include size (100%, auto);
-      @include flex-row (1.5rem, end, center, wrap);
+      @include flex-row (1.5rem, start, start, wrap);
       padding-left: $margin_big;
 }
 

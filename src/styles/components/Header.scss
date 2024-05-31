@@ -2,10 +2,10 @@
 @import "../base/_mixins.scss";
 
 .header {
-  @include size(100vw, 6rem, $background_second);
+  @include size(100vw, 7rem, $background_second);
 
   display: grid;
-  grid-template-columns: 2fr 1fr 7fr auto 1fr;
+  grid-template-columns: 2fr 1fr 7fr auto 1fr 1rem;
   grid-template-rows: 1fr 1fr;
   align-items: center;
   column-gap: 2rem;
@@ -15,10 +15,21 @@
 
 .header .legacy {
   grid-row: 1/1;
-  grid-column: 1/6;
-  justify-self: center;
+  grid-column: 1/7;
+  padding-top: 1rem;
+
+
+  @include size(100%, 100%, $background_primary);
+  text-align: center;
   font-style: oblique;
+  color: $color_orange;
+
+
 }
+
+
+
+
 
 .header h1 {
   @include font(1.5rem, $color_primary, bold);
@@ -36,13 +47,14 @@
   @include flex(1.5rem, end, center);
   @include size(100%, 4rem, transparent);
   position: relative;
-  justify-self: end;
+  right: 6rem;
+  justify-self: center;
 }
 
 .header .input {
   @include size(3rem, 3rem, transparent);
   padding: 1rem;
-  padding-right: 2rem;
+  padding-right: 3rem;
   border-radius: 50%;
   transition: 0.5s ease-in-out;
 }
@@ -136,7 +148,7 @@
 
 // ------------------------------
 .header .loginButton {
-  justify-self: start;
+  justify-self: center;
   margin-right: 4rem;
   color: $color_primary;
 }
@@ -152,7 +164,7 @@
   @include size(50%, auto, $background_third);
   min-height: 300px;
 
-  @include position(absolute, n, 4rem, n, n);
+  @include position(absolute, n, 7rem, n, n);
   z-index: 1;
 
   border-radius: 10px;
