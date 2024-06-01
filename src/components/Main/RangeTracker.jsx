@@ -1,4 +1,7 @@
-export const RangeTracker = ({ ratingValue, onChange }) => {
+export const RangeTracker = ({ ratingValue, setRatingValue }) => {
+  const handleTrackRatingChange = (event) => {
+    setRatingValue(event.target.value);
+  };
   return (
     <div className="rangeWrapper">
       <input
@@ -8,7 +11,7 @@ export const RangeTracker = ({ ratingValue, onChange }) => {
         step="0.1"
         value={ratingValue}
         className="ratingSlider"
-        onChange={onChange}
+        onChange={handleTrackRatingChange}
       />{" "}
       <div>
         <p>

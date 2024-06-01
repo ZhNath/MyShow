@@ -56,7 +56,6 @@ export const dataFetcher = async (type) => {
   const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}`;
   const response = await fetch(_url);
   const data = await response.json();
-  console.log(data);
 
   return data;
 };

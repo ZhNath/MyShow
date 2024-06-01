@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const FilterButton = ({ name, id, onFilterListChange, style }) => {
+export const FilterButton = ({ name, id, style, setFilterList }) => {
   const [selected, setSelected] = useState(false);
 
   const handleOnClick = () => {
@@ -8,8 +8,16 @@ export const FilterButton = ({ name, id, onFilterListChange, style }) => {
   };
 
   useEffect(() => {
-    onFilterListChange(id, selected);
+    handleFilterListChange(id, selected);
   }, [selected]);
+
+  const handleFilterListChange = (id, selected) => {
+    if (selected) {
+      setFilterList((prev) => [...prev, id]);
+    } else {
+      setFilterList((prev) => prev.filter((item) => item !== id));
+    }
+  };
 
   return (
     <button

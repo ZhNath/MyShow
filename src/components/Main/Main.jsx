@@ -6,10 +6,7 @@ import { FilterBy } from "./FilterBy";
 
 export const Main = () => {
   const [gallery, setGallery] = useState([]);
-  const [filterList, setFilterList] = useState([]);
   const [allData, setAllData] = useState([]);
-  const [languageFilterList, setLanguageFilterList] = useState([]);
-  const [ratingValue, setRatingValue] = useState(0);
 
   useEffect(() => {
     const allResults = [];
@@ -33,44 +30,12 @@ export const Main = () => {
     fetchPopular();
   }, []);
 
-  const handleSubmitOnClick = () => {
-    const genreFilterActive = filterList.length > 0;
-    const languageFilterActive = languageFilterList.length > 0;
-    const ratingFilterActive = ratingValue > 0;
-
-    if (genreFilterActive || languageFilterActive || ratingFilterActive) {
-      const filteredData = allData.filter((tv) => {
-        const genreMatch =
-          !genreFilterActive ||
-          filterList.every((genreId) => tv.genre_ids.includes(genreId));
-
-        const languageMatch =
-          !languageFilterActive ||
-          languageFilterList.includes(tv.original_language);
-
-        const ratingMatch = !ratingValue || tv.vote_average >= ratingValue;
-        return genreMatch && languageMatch && ratingMatch;
-      });
-      const sortedResults = filteredData.sort(
-        (a, b) => b.vote_average - a.vote_average
-      );
-      setGallery(sortedResults);
-    } else {
-      setGallery(allData);
-    }
-  };
-
   return (
     <div className="main">
-      {console.log("gallery", gallery)}
-      <FilterBy
-        filterList={filterList}
-        setFilterList={setFilterList}
-        setLanguageFilterList={setLanguageFilterList}
-        setRatingValue={setRatingValue}
-        ratingValue={ratingValue}
-        onSubmit={handleSubmitOnClick}
-      />
+      <FilterBy allData={allData} setGallery={setGallery} />
+
+      {/* Big TV Cards  */}
+
       <div className="main_container">
         {gallery?.map((tv) => (
           <Link to={`/filter/${tv.id}`} key={tv.id} className="main_card">

@@ -1,41 +1,15 @@
 import genres from "../../../public/genres.json";
-import languages from "../../../public/languages.json";
 import { FilterButton } from "./FilterButton";
 import { RangeTracker } from "./RangeTracker";
 import { ResetFilters } from "./ResetFilters";
-import { Select } from "./Select";
+import { LanguageSelect } from "./LanguageSelect";
+import { SubmitButton } from "./SubmitButton";
+import { useState } from "react";
 
-export const FilterBy = ({
-  setFilterList,
-  setLanguageFilterList,
-  setRatingValue,
-  ratingValue,
-  onSubmit,
-}) => {
-  const handleLanguageSelectOnChange = (event) => {
-    const value = event.target.value;
-    if (value === "xx") {
-      setLanguageFilterList([]);
-    } else {
-      setLanguageFilterList([value]);
-    }
-  };
-
-  const handleFilterListChange = (id, selected) => {
-    if (selected) {
-      setFilterList((prev) => [...prev, id]);
-    } else {
-      setFilterList((prev) => prev.filter((item) => item !== id));
-    }
-  };
-
-  const handleSubmitOnClick = () => {
-    onSubmit();
-  };
-
-  const handleTrackRatingChange = (event) => {
-    setRatingValue(event.target.value);
-  };
+export const FilterBy = ({ allData, setGallery }) => {
+  const [languageFilter, setLanguageFilter] = useState([]);
+  const [filterList, setFilterList] = useState([]);
+  const [ratingValue, setRatingValue] = useState(0);
 
   return (
     <div className="filter-section">
@@ -46,28 +20,30 @@ export const FilterBy = ({
             key={genre.id}
             name={genre.name}
             id={genre.id}
-            onFilterListChange={handleFilterListChange}
+            setFilterList={setFilterList}
           />
         ))}
       </div>
 
-      <Select
-        name="language"
-        options={languages}
-        onChange={handleLanguageSelectOnChange}
-      />
-      <RangeTracker
-        ratingValue={ratingValue}
-        onChange={handleTrackRatingChange}
-      />
+      <LanguageSelect setLanguageFilter={setLanguageFilter} />
+      <RangeTracker ratingValue={ratingValue} setRatingValue={setRatingValue} />
       <ResetFilters
         setFilterList={setFilterList}
-        setLanguageFilterList={setLanguageFilterList}
+        setLanguageFilterList={setLanguageFilter}
         setRatingValue={setRatingValue}
+        ratingValue={ratingValue}
+        filterList={filterList}
+        languageFilter={languageFilter}
+        allData={allData}
+        setGallery={setGallery}
       />
-      <button type="submit" className="submit" onClick={handleSubmitOnClick}>
-        FILTER
-      </button>
+      <SubmitButton
+        languageFilter={languageFilter}
+        filterList={filterList}
+        ratingValue={ratingValue}
+        allData={allData}
+        setGallery={setGallery}
+      />
     </div>
   );
 };
