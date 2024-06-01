@@ -13,17 +13,6 @@ export const FilterButton = ({
     setSelected(!selected);
   };
 
-  useEffect(() => {
-    handleFilterListChange(id, selected);
-  }, [selected]);
-
-  useEffect(() => {
-    if (filterList.lenght === 0) {
-      setSelected(false);
-      console.log("filterList is empty");
-    }
-  }, [filterList]);
-
   const handleFilterListChange = (id, selected) => {
     if (selected) {
       setFilterList((prev) => [...prev, id]);
@@ -31,6 +20,16 @@ export const FilterButton = ({
       setFilterList((prev) => prev.filter((item) => item !== id));
     }
   };
+
+  useEffect(() => {
+    handleFilterListChange(id, selected);
+  }, [selected]);
+
+  useEffect(() => {
+    if (filterList.length === 0) {
+      setSelected(false);
+    }
+  }, [filterList]);
 
   return (
     <button

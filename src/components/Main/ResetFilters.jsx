@@ -5,9 +5,6 @@ export const ResetFilters = ({
   setFilterList,
   setLanguageFilterList,
   setRatingValue,
-  ratingValue,
-  filterList,
-  languageFilter,
   allData,
   setGallery,
 }) => {
@@ -19,19 +16,9 @@ export const ResetFilters = ({
     setGallery(allData);
   };
 
-  useEffect(() => {
-    handleOnClick({
-      ratingValue,
-      filterList,
-      languageFilter,
-      allData,
-      setGallery,
-    });
-  }, [ratingValue, filterList, languageFilter, allData, setGallery]);
-
   return (
-    <div className="resetFilters">
-      <button onClick={handleResetFilters}>Reset Filters</button>
-    </div>
+    <button type="submit" className="submit" onClick={handleResetFilters}>
+      Reset Filters
+    </button>
   );
 };

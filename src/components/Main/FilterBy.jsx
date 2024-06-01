@@ -4,12 +4,23 @@ import { RangeTracker } from "./RangeTracker";
 import { ResetFilters } from "./ResetFilters";
 import { LanguageSelect } from "./LanguageSelect";
 import { SubmitButton } from "./SubmitButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { handleOnClick } from "./handleOnClick";
 
 export const FilterBy = ({ allData, setGallery }) => {
   const [languageFilter, setLanguageFilter] = useState([]);
   const [filterList, setFilterList] = useState([]);
   const [ratingValue, setRatingValue] = useState(0);
+
+  useEffect(() => {
+    handleOnClick({
+      ratingValue,
+      filterList,
+      languageFilter,
+      allData,
+      setGallery,
+    });
+  }, [ratingValue, filterList, languageFilter, allData, setGallery]);
 
   return (
     <div className="filter-section">
@@ -26,7 +37,10 @@ export const FilterBy = ({ allData, setGallery }) => {
         ))}
       </div>
 
-      <LanguageSelect setLanguageFilter={setLanguageFilter} />
+      <LanguageSelect
+        setLanguageFilter={setLanguageFilter}
+        languageFilter={languageFilter}
+      />
       <RangeTracker ratingValue={ratingValue} setRatingValue={setRatingValue} />
       <ResetFilters
         setFilterList={setFilterList}

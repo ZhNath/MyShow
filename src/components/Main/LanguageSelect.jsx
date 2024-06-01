@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import languages from "../../../public/languages.json";
 
-export const LanguageSelect = ({ setLanguageFilter }) => {
+export const LanguageSelect = ({ setLanguageFilter, languageFilter }) => {
+  const [selectedLanguage, setSelectedLanguage] = useState("");
+
   const handleLanguageSelectOnChange = (event) => {
     const value = event.target.value;
+    setSelectedLanguage(value);
     if (value === "xx") {
       setLanguageFilter([]);
     } else {
@@ -11,8 +14,14 @@ export const LanguageSelect = ({ setLanguageFilter }) => {
     }
   };
 
+  useEffect(() => {
+    if (languageFilter.length === 0) {
+      setSelectedLanguage("");
+    }
+  }, [languageFilter]);
+
   return (
-    <select onChange={handleLanguageSelectOnChange}>
+    <select value={selectedLanguage} onChange={handleLanguageSelectOnChange}>
       <option value="">Select language </option>
       {languages?.map((language) => (
         <option key={language.iso_639_1} value={language.iso_639_1}>
