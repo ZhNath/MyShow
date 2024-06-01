@@ -41,7 +41,9 @@ export const FilterBy = ({ allData, setGallery }) => {
         setLanguageFilter={setLanguageFilter}
         languageFilter={languageFilter}
       />
+
       <RangeTracker ratingValue={ratingValue} setRatingValue={setRatingValue} />
+
       <ResetFilters
         setFilterList={setFilterList}
         setLanguageFilterList={setLanguageFilter}
