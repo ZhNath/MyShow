@@ -1,5 +1,10 @@
 [
   {
+    "iso_639_1": "xx",
+    "english_name": "No Language",
+    "name": "No Language"
+  },
+  {
     "iso_639_1": "cs",
     "english_name": "Czech",
     "name": "Český"
@@ -50,12 +55,6 @@
     "iso_639_1": "hu",
     "english_name": "Hungarian",
     "name": "Magyar"
-  },
-
-  {
-    "iso_639_1": "xx",
-    "english_name": "No Language",
-    "name": "No Language"
   },
 
   {
