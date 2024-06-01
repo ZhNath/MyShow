@@ -1,4 +1,5 @@
 import { handleOnClick } from "./handleOnClick";
+import { useEffect } from "react";
 
 export const ResetFilters = ({
   setFilterList,
@@ -14,6 +15,11 @@ export const ResetFilters = ({
     setFilterList([]);
     setLanguageFilterList([]);
     setRatingValue(0);
+
+    setGallery(allData);
+  };
+
+  useEffect(() => {
     handleOnClick({
       ratingValue,
       filterList,
@@ -21,7 +27,7 @@ export const ResetFilters = ({
       allData,
       setGallery,
     });
-  };
+  }, [ratingValue, filterList, languageFilter, allData, setGallery]);
 
   return (
     <div className="resetFilters">

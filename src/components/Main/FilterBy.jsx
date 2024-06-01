@@ -21,6 +21,7 @@ export const FilterBy = ({ allData, setGallery }) => {
             name={genre.name}
             id={genre.id}
             setFilterList={setFilterList}
+            filterList={filterList}
           />
         ))}
       </div>

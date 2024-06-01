@@ -1,4 +1,4 @@
-import { ResultOfSearchingById } from "../../assets/utils/ResultOfSearchingById";
+import { ResultOfSearchingById } from "../../../assets/utils/ResultOfSearchingById";
 import { Center } from "./Center";
 import { LeftSide } from "./LeftSide";
 import { RightSide } from "./RightSide";

@@ -1,4 +1,4 @@
-import { ToWatchListButton } from "../../assets/utils/ToWatchListButton";
+import { ToWatchListButton } from "../../../assets/utils/ToWatchListButton";
 import { Link } from "react-router-dom";
 
 export const Center = ({ tv }) => {

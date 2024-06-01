@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 
-export const FilterButton = ({ name, id, style, setFilterList }) => {
+export const FilterButton = ({
+  name,
+  id,
+  style,
+  setFilterList,
+  filterList,
+}) => {
   const [selected, setSelected] = useState(false);
 
   const handleOnClick = () => {
@@ -10,6 +16,13 @@ export const FilterButton = ({ name, id, style, setFilterList }) => {
   useEffect(() => {
     handleFilterListChange(id, selected);
   }, [selected]);
+
+  useEffect(() => {
+    if (filterList.lenght === 0) {
+      setSelected(false);
+      console.log("filterList is empty");
+    }
+  }, [filterList]);
 
   const handleFilterListChange = (id, selected) => {
     if (selected) {
