@@ -15,7 +15,7 @@ export const Main = () => {
     const allResults = [];
     const fetchPopular = async () => {
       try {
-        for (let i = 1; i <= 20; i++) {
+        for (let i = 1; i <= 40; i++) {
           const data = await dataFetcher(`tv/popular?page=${i}&`);
           allResults.push(...data.results);
         }
@@ -51,8 +51,10 @@ export const Main = () => {
         const ratingMatch = !ratingValue || tv.vote_average >= ratingValue;
         return genreMatch && languageMatch && ratingMatch;
       });
-
-      setGallery(filteredData);
+      const sortedResults = filteredData.sort(
+        (a, b) => b.vote_average - a.vote_average
+      );
+      setGallery(sortedResults);
     } else {
       setGallery(allData);
     }
