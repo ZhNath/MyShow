@@ -157,7 +157,7 @@
   color: $color_secondary;
 
 
-  @include size(50%, auto, $background_third);
+  @include size(50%, auto, var(--dropDownBackground));
   min-height: 300px;
 
   @include position(absolute, n, 4rem, n, n);

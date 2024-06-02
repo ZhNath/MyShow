@@ -17,9 +17,10 @@
       --background_circle: var(--filterCircleColorLight);
       --background_circle_hover: var(--filterCircleColorLightHover);
       --headerBackground: var(--filterCircleColorLight);
-
-
-
+      --dropDownBackground: var(--filterCircleColorLightHover);
+      --shadow: 6px 6px 12px #47312d,
+            -6px -6px 12px #dab68d33;
+      --trackColor: rgb(143, 144, 150);
 }
 
 [data-theme="dark"] {
@@ -28,6 +29,10 @@
       --background_circle: var(--filterCircleColorDark);
       --background_circle_hover: var(--filterCircleColorDarkHover);
       --headerBackground: var(--filterCircleColorDark);
+      --dropDownBackground: var(--filterCircleColorDarkHover);
+      --shadow: 6px 6px 12px #170303,
+            -6px -6px 12px #8d98da33;
+      --trackColor: rgba(255, 255, 255, 0.87);
 }
 
 

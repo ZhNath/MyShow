@@ -6,6 +6,7 @@
       @include size (95vw, auto);
       margin: auto;
       margin-top: $margin_big;
+
 }
 
 .main_container {
@@ -18,8 +19,9 @@
       @include size (9rem, 18rem);
       @include flex-col (1rem, start, center);
       text-align: center;
-      box-shadow: $shadow;
+      box-shadow: var(--shadow);
       position: relative;
+
 
 }
 

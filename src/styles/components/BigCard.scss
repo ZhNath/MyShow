@@ -1,26 +1,23 @@
 .tvCard {
-  @include size(80vw, auto);
-  min-height: 100vh;
+  @include size(70vw, auto);
+  max-height: 80vh;
 
   margin: $margin_big auto;
 
-  padding-bottom: 2rem;
-  box-shadow: $shadow;
-
+  box-shadow: var(--shadow);
   display: grid;
   grid-template-columns: 2fr 2fr 1fr;
 }
 
-.tvCard .left {
-  margin: 1rem;
-  @include flex-col(0, start, center);
-}
+
 
 .tvCard img {
-  @include size(100%, auto, cover);
+  margin: 2rem;
+  @include size(70%, auto, cover);
 }
 
 .tvCard .center {
+  margin-top: 2rem;
   @include flex-col(1rem, start, start);
 }
 
@@ -29,6 +26,8 @@
 }
 
 .tvCard .rating {
+  margin-top: 2rem;
+
   padding: 4px;
   border: 1px solid $background_third;
 }
@@ -51,10 +50,13 @@
 }
 
 .tvCard .aboutFilm span {
+
   font-weight: 100;
 }
 
 .tvCard .right {
+  margin-top: 2rem;
+
   @include flex-col(1rem, start, center);
 }
 

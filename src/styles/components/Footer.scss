@@ -1,16 +1,15 @@
-
 .footer {
-      margin: $margin_big;
-      @include flex-row(0.5rem, space-between, center);
-      border-top: 2px solid white ;
-     
-     
+     @include position(fixed, 0, n, 0, 0);
+     @include flex-row(0.5rem, space-around, center);
+     border-top: 2px solid white;
+     @include size(100vw, 7rem, $background_primary);
+     width: 100vw;
+     height: 7rem;
 }
 
 .footer-basic {
-      @include flex-col(0.5rem, center, center);
-      text-shadow: 0 0 10px white ;
-      margin-top: 20px;
+     @include flex-col(0.5rem, center, center);
+     text-shadow: 0 0 10px white;
 
 }
 
@@ -18,19 +17,16 @@
      @include flex-col(0.5rem, center, center);
      display: block;
      padding: 0.2rem;
-     
- }
 
- .logo-bild {
-      @include flex-col(0.5rem, center, center);
-      
- }
- .logo-bild .logo {
-      margin-top: 10px;
-      width: 70px;
-      height: 70px;
- }
+}
 
- 
+.logo-bild {
+     @include flex-col(0.5rem, center, center);
 
+}
 
+.logo-bild .logo {
+     margin-top: 10px;
+     width: 70px;
+     height: 70px;
+}

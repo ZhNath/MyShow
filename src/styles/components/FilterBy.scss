@@ -83,10 +83,10 @@
 
 input[type='range'] {
       -webkit-appearance: none;
-      @include size(100%, 0.5rem, $color_primary);
+      @include size(100%, 0.5rem, var(--trackColor));
       margin: 0;
       padding: 0;
-      background: $color_primary;
+      // background: var(--trackColor);
       -webkit-transition: .2s;
       transition: opacity .2s;
 }
