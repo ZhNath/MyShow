@@ -1,7 +1,10 @@
 import { ToWatchListButton } from "../../../assets/utils/ToWatchListButton";
 import { Link } from "react-router-dom";
+import { useAuthContext } from "../../../globalContext/AuthContext";
 
 export const Center = ({ tv }) => {
+  const { isAuthenticated } = useAuthContext();
+
   return (
     <div className="center">
       <h1>
@@ -13,7 +16,7 @@ export const Center = ({ tv }) => {
         <div>{tv.genres.join(" | ")}</div>
       </div>
       <ToWatchListButton mediaId={tv.id} />
-      <Link to="/watchlist">
+      <Link to={isAuthenticated ? "/watchlist" : "/login"}>
         <button className="toFromWatch">Go to Watch List</button>
       </Link>
       <div className="aboutFilm">
