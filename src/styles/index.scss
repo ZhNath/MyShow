@@ -1,16 +1,6 @@
 @import './base/variables.scss';
 @import './base/settings.scss';
 @import './base/mixins.scss';
-
-body {
-  display: flex;
-  width: 100vw;
-  min-width: 320px;
-  min-height: 100vh;
-
-}
-
-
 @import './components/Header.scss';
 @import './components/FilterBy.scss';
 @import './components/LogIn.scss';
@@ -19,4 +9,12 @@ body {
 @import './components/WatchListCard.scss';
 @import './components/Main.scss';
 @import './components/ActorCard.scss';
-@import './components/Footer.scss'
+@import './components/Footer.scss';
+
+body {
+  display: flex;
+  width: 100vw;
+  min-width: 320px;
+  min-height: 100vh;
+
+}
