@@ -1,5 +1,5 @@
 .footer {
-     @include position(fixed, 0, n, 0, 0);
+     // @include position(fixed, 0, n, 0, 0);
      @include flex-row(0.5rem, space-around, center);
      border-top: 2px solid white;
      @include size(100vw, 7rem, $background_primary);
