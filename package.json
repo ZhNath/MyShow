@@ -16,14 +16,14 @@
     "node-fetch": "^3.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.30.0",
+    "react-router-dom": "^6.30.1",
     "sass": "^1.93.2",
     "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
-    "@vitejs/plugin-react": "^4.2.1",
+    "@vitejs/plugin-react": "^5.0.4",
     "eslint": "^8.57.0",
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
