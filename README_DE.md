@@ -22,3 +22,5 @@ Sie können das Projekt hier ansehen: [Vercel Vorschau](#) *(Autorisierung erfor
 1. Repository klonen:
 ```bash
 git clone <repo-url>
+
+    "install": "npm install react-router-dom && npm install node-fetch && npm install xml2js && npm i classnames && npm install sass && npm run dev "
