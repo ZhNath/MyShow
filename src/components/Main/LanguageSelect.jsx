@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import languages from "../../../public/languages.json";
+import languages from "../../assets/languages.json";
 
 export const LanguageSelect = ({ setLanguageFilter, languageFilter }) => {
   const [selectedLanguage, setSelectedLanguage] = useState("");

@@ -19,8 +19,10 @@ export const Input_DropDown = () => {
         return false;
       });
 
-    const data = await dataFetcher(`/search/tv?query=${event.target.value}&`);
+    const data = await dataFetcher(`/search/tv?query=${event.target.value}`);
     setSearchResults(data);
+    console.log(event.target.value)
+    console.log(data)
   };
 
   return (

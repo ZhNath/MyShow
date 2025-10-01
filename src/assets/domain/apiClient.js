@@ -52,11 +52,13 @@ export const makeAccount = async (session_id) => {
 
 // Data fetching
 
-export const dataFetcher = async (type) => {
-  const _url = `${BASE_URL}/${type}api_key=${API_KEY}&language=${language}`;
+export const dataFetcher = async (endpoint) => {
+  const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
+  const separator = cleanEndpoint.includes('?') ? '&' : '?';
+  const _url = `${BASE_URL}/${cleanEndpoint}${separator}api_key=${API_KEY}&language=${language}`;
+
   const response = await fetch(_url);
   const data = await response.json();
-
   return data;
 };
 

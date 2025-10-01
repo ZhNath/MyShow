@@ -1,3 +1,7 @@
+@use '../base/variables.scss' as *; 
+@use '../base/settings.scss' as *;
+@use '../base/mixins.scss' as *;
+
 .filter-section {
       @include flex-col(4rem, start, start);
       margin-top: 1rem;

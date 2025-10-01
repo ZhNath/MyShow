@@ -1,5 +1,5 @@
-@import "../base/_variables.scss";
-@import "../base/_mixins.scss";
+@use "../base/_variables.scss" as *;
+@use "../base/_mixins.scss" as *;
 
 .header {
   @include size(100vw, 7rem);

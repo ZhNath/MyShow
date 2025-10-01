@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $background_primary: #242424;
 $background_second: rgb(62, 62, 181);
 $background_second_transparent: rgba(62, 62, 181, 0.45);
@@ -15,7 +17,7 @@ $color_orange: rgb(255, 136, 0);
 //       -6px -6px 12px #8d98da33;
 $margin_big: 2rem;
 
-$randomNumber: random(2);
+$randomNumber: math.random(2);
 
 :root {
       --filterCircleColorDark: rgb(62, 62, 181);

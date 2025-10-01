@@ -1,3 +1,7 @@
+@use '../base/variables.scss' as *; 
+@use '../base/settings.scss' as *;
+@use '../base/mixins.scss' as *;
+
 .watchListCard {
   position: relative;
 

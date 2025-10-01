@@ -1,4 +1,4 @@
-import genres from "../../../public/genres.json";
+import genres from "../../assets/genres.json";
 import { FilterButton } from "./FilterButton";
 import { RangeTracker } from "./RangeTracker";
 import { ResetFilters } from "./ResetFilters";

@@ -1,15 +1,15 @@
-@import './base/variables.scss';
-@import './base/settings.scss';
-@import './base/mixins.scss';
-@import './components/Header.scss';
-@import './components/FilterBy.scss';
-@import './components/LogIn.scss';
-@import './components/SmallCard.scss';
-@import './components/BigCard.scss';
-@import './components/WatchListCard.scss';
-@import './components/Main.scss';
-@import './components/ActorCard.scss';
-@import './components/Footer.scss';
+@use './base/variables.scss' as *; 
+@use './base/settings.scss' as *;
+@use './base/mixins.scss' as *;
+@use './components/Header.scss' as *;
+@use './components/FilterBy.scss' as *;
+@use './components/LogIn.scss' as *;
+@use './components/SmallCard.scss' as *;
+@use './components/BigCard.scss' as *;
+@use './components/WatchListCard.scss' as *;
+@use './components/Main.scss' as *;
+@use './components/ActorCard.scss' as * ;
+@use './components/Footer.scss' as *;
 
 body {
   display: flex;
